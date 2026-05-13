@@ -59,12 +59,12 @@ When an integration or library is open, the project explorer groups its artifact
 
 | Section | What it shows |
 |---|---|
-| **Entry points** | HTTP services, GraphQL services, automations, and event listeners that trigger your integration. |
+| **Entry Points** | HTTP services, GraphQL services, automations, and event listeners that trigger your integration. |
 | **Listeners** | Protocol-specific configurations (host, port) that entry points bind to. |
 | **Connections** | Configured links to external systems such as databases, HTTP APIs, and message brokers. |
 | **Types** | Custom records, enums, arrays, service classes, and unions used in your integration. |
 | **Functions** | Reusable logic blocks callable from entry points or other functions. |
-| **Data mappers** | Visual transformations between source and target types. |
+| **Data Mappers** | Visual transformations between source and target types. |
 | **Configurations** | Variables sourced from `Config.toml` at runtime. |
 
 For details on each artifact type, see [Integration artifacts](/docs/develop/integration-artifacts).
@@ -94,6 +94,6 @@ The toolbar is the same across the Project view, Integrator view, and Library vi
 
 ## What's next
 
-- [Project view](views/project-view.md): work with multiple integrations and libraries.
-- [Integrator view](views/integration-view.md): build and manage a single integration.
-- [Library view](views/library-view.md): build reusable libraries.
+- [Project view](views/project-view.md) — Work with multiple integrations and libraries.
+- [Integrator view](views/integration-view.md) — Build and manage a single integration.
+- [Library view](views/library-view.md) — Build reusable libraries.

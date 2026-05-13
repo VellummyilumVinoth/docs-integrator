@@ -53,7 +53,7 @@ Each section of the node palette covers one kind of work. The pages below descri
 Most nodes open a configuration form in a side panel when you add them. Forms commonly include:
 
 - **Expression fields** for writing Ballerina expressions. The [Expression editor](../expression-editor) provides type-aware autocomplete and inline validation in any expression field.
-- **Type fields** for choosing or defining record, enum, or unions etc. Use the [Type editor](../type-editor) to create new types inline.
+- **Type fields** for choosing or defining record, enum, union, or other types. Use the [Type editor](../type-editor) to create new types inline.
 - **Variable fields** that bind a result to a named variable for downstream nodes to read.
 
 Save the form to add the node to the flow. The visual designer keeps the canvas and the source in sync, so any change in either view is immediately reflected in the other.
