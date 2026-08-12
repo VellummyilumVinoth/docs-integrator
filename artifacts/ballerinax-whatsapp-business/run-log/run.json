@@ -1,0 +1,45 @@
+{
+  "central_examples_found": true,
+  "central_url": "https://api.central.ballerina.io/2.0/registry/packages/ballerinax/whatsapp.business/2.0.2",
+  "code_server": {
+    "pid": null,
+    "port": 8080,
+    "started_by_run": false
+  },
+  "completed_at": "2026-08-11T09:24:10.839957+00:00",
+  "context_path": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/run-log/context.json",
+  "devant_url": "https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/ballerinax_whatsapp_business_connector_sample",
+  "doc_path": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/workflow-docs/ballerinax_whatsapp_business.md",
+  "examples_added": true,
+  "github_url": "https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/ballerinax_whatsapp_business_connector_sample",
+  "image_prefix": "ballerinax_whatsapp_business",
+  "invocation_root": "/Users/vinoth/Downloads/WSO2/docs-integrator",
+  "metadata_path": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/run-log/central-metadata.json",
+  "organization": "ballerinax",
+  "package": "whatsapp.business",
+  "prepared_at": "2026-08-11T08:13:24.391013+00:00",
+  "prerequisites": {
+    "code-server": true,
+    "node": true,
+    "npx": true,
+    "python3": true
+  },
+  "requested_coordinate": "ballerinax/whatsapp.business:2.0.2",
+  "requested_version": "2.0.2",
+  "resolved_coordinate": "ballerinax/whatsapp.business:2.0.2",
+  "resolved_version": "2.0.2",
+  "run_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business",
+  "run_log_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/run-log",
+  "sample_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/sample/ballerinax_whatsapp_business_connector_sample",
+  "sample_name": "ballerinax_whatsapp_business_connector_sample",
+  "sample_parent_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/sample",
+  "screenshots_cropped": true,
+  "screenshots_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/screenshots",
+  "slug": "ballerinax-whatsapp-business",
+  "try_it_yourself_added": true,
+  "validation": {
+    "errors": [],
+    "status": "passed"
+  },
+  "workflow_docs_dir": "/Users/vinoth/Downloads/WSO2/docs-integrator/artifacts/ballerinax-whatsapp-business/workflow-docs"
+}
