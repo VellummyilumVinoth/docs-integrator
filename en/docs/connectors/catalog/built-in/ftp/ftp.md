@@ -5,7 +5,7 @@ title: "FTP"
 description: "Overview of the ballerina/ftp module for WSO2 Integrator."
 ---
 
-FTP (File Transfer Protocol) is a standard network protocol used for transferring files between a client and a server. The Ballerina `ballerina/ftp` connector (v2.19.0) provides programmatic access to FTP, FTPS, and SFTP servers, enabling you to read, write, and manage remote files and directories, as well as listen for file change events in your Ballerina integration flows.
+FTP (File Transfer Protocol) is a standard network protocol used for transferring files between a client and a server. The Ballerina `ballerina/ftp` connector provides programmatic access to FTP, FTPS, and SFTP servers, enabling you to read, write, and manage remote files and directories, as well as listen for file change events in your Ballerina integration flows.
 
 
 ## Key features

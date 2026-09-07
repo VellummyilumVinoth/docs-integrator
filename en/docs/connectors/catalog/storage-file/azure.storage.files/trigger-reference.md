@@ -196,7 +196,7 @@ The type of the optional `@files:FunctionConfig` annotation on individual handle
 |-------|------|---------|-------------|
 | `fileNamePattern` | <code>string</code> | <code>()</code> | Per-handler routing override: a regular expression matched against the file name. Ignored on `onError`, which is never routed a file. |
 | `afterProcess` | <code>DELETE&#124;Move</code> | <code>()</code> | Auto-consume action after the handler returns normally. On `onError`, it applies when `onError` returns normally, meaning it handled the binding failure. |
-| `afterError` | <code>DELETE&#124;Move</code> | <code>()</code> | Auto-consume action after the handler returns an error. On a content handler it also covers content-binding failures, but only when the service declares no `onError`. On `onError` it applies when `onError` itself returns an error or panics. |
+| `afterError` | <code>DELETE&#124;Move</code> | <code>()</code> | Auto-consume action after the handler returns an error or panics. On a content handler it also covers content-binding failures, but only when the service declares no `onError`. On `onError` it applies when `onError` itself returns an error or panics. |
 
 `files:DELETE` deletes the file. A `Move` record moves it:
 

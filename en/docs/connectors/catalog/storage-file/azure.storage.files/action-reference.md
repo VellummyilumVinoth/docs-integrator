@@ -116,7 +116,7 @@ Both clients take a `ClientConfiguration`. Credentials come from the [Setup Guid
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `retryPolicyType` | <code>RetryPolicyType</code> | <code>EXPONENTIAL</code> | How the delay between tries grows (`EXPONENTIAL` or `FIXED`). |
+| `retryPolicyType` | <code>RetryPolicyType</code> | <code>EXPONENTIAL</code> | How the delay between tries grows (`EXPONENTIAL` or `FIXED_INTERVAL`). |
 | `maxTries` | <code>int</code> | <code>4</code> | The maximum number of tries (the first attempt plus retries). |
 | `tryTimeoutSeconds` | <code>decimal</code> | <code>60</code> | The timeout applied to each individual try, in seconds. |
 | `retryDelaySeconds` | <code>decimal</code> | <code>4</code> | The base delay between tries, in seconds. |
@@ -2138,7 +2138,7 @@ A key for signing user-delegation SAS tokens, obtained via `AdminClient.getUserD
 - `LeaseStatus`: `LOCKED`, `UNLOCKED`.
 - `LeaseDuration`: `INFINITE`, `FIXED`.
 - `SasProtocol`: `HTTPS`, `HTTPS_HTTP`.
-- `RetryPolicyType`: `EXPONENTIAL`, `FIXED`.
+- `RetryPolicyType`: `EXPONENTIAL`, `FIXED_INTERVAL`.
 - `ProxyType`: `HTTP`, `SOCKS4`, `SOCKS5`.
 
 ### Errors
