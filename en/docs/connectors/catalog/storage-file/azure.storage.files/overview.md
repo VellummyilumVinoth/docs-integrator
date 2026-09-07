@@ -5,7 +5,7 @@ title: "Azure Files"
 description: "Overview of the ballerinax/azure.storage.files connector for WSO2 Integrator."
 ---
 
-[Azure Files](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction) offers fully managed file shares in the cloud, accessible via the industry-standard SMB and NFS protocols and a REST API. The `ballerinax/azure.storage.files` connector (v1.0.1) connects WSO2 Integrator to Microsoft Azure Files, managing shares and the directories and files within them: uploads, downloads, copies, renames, byte ranges, snapshots, and SAS token generation. A polling `Listener` turns files arriving on a share into service events.
+[Azure Files](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction) offers fully managed file shares in the cloud, accessible via the industry-standard SMB and NFS protocols and a REST API. The `ballerinax/azure.storage.files` connector connects WSO2 Integrator to Microsoft Azure Files, managing shares and the directories and files within them: uploads, downloads, copies, renames, byte ranges, snapshots, and SAS token generation. A polling `Listener` turns files arriving on a share into service events.
 
 ## Key features
 
