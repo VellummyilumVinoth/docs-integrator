@@ -441,6 +441,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'AWS DynamoDB Streams',
+          link: { type: 'doc', id: 'connectors/catalog/database/aws.dynamodbstreams/connector-overview' },
+          items: [
+            'connectors/catalog/database/aws.dynamodbstreams/setup-guide',
+            'connectors/catalog/database/aws.dynamodbstreams/actions',
+            'connectors/catalog/database/aws.dynamodbstreams/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'AWS Marketplace MPE',
           link: { type: 'doc', id: 'connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws-marketplace-mpe-connector-overview' },
           items: [
@@ -507,6 +517,16 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/marketing-social/aws.ses/setup-guide',
             'connectors/catalog/marketing-social/aws.ses/actions',
             'connectors/catalog/marketing-social/aws.ses/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'AWS SimpleDB',
+          link: { type: 'doc', id: 'connectors/catalog/database/aws.simpledb/connector-overview' },
+          items: [
+            'connectors/catalog/database/aws.simpledb/setup-guide',
+            'connectors/catalog/database/aws.simpledb/actions',
+            'connectors/catalog/database/aws.simpledb/example',
           ],
         },
         {
