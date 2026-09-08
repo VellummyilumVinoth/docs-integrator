@@ -5,7 +5,7 @@ connector_name: "sap.jco"
 
 # Triggers
 
-The SAP JCo connector supports event-driven integration where the SAP system pushes IDocs or invokes RFC function modules on a registered Ballerina service. Two distinct service types handle these two event categories.
+The SAP ECC (JCo) connector supports event-driven integration where the SAP system pushes IDocs or invokes RFC function modules on a registered Ballerina service. Two distinct service types handle these two event categories.
 
 Three components work together:
 

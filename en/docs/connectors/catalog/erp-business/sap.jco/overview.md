@@ -1,7 +1,7 @@
 ---
 connector: true
 connector_name: "sap.jco"
-title: "SAP JCo"
+title: "SAP ECC (JCo)"
 description: "Overview of the ballerinax/sap.jco connector for WSO2 Integrator."
 ---
 
@@ -56,6 +56,6 @@ As an open source project, WSO2 welcomes contributions from the community.
 
 To contribute to the code for this connector, please create a pull request in the following repository.
 
-* [SAP JCo Connector GitHub repository](https://github.com/ballerina-platform/module-ballerinax-sap.jco)
+* [SAP ECC (JCo) connector GitHub repository](https://github.com/ballerina-platform/module-ballerinax-sap.jco)
 
 Check the issue tracker for open issues that interest you. We look forward to receiving your contributions.

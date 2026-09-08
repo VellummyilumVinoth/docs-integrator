@@ -20,7 +20,7 @@ For event-driven integration, see the [Trigger Reference](trigger-reference.md).
 
 ## Client
 
-SAP JCo client for calling RFC-enabled function modules and sending IDocs to an SAP system.
+SAP ECC (JCo) client for calling RFC-enabled function modules and sending IDocs to an SAP system.
 
 ### Configuration
 
