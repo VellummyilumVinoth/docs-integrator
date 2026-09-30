@@ -24,13 +24,13 @@ Inline agents can be embedded directly within integration flows, REST APIs, Grap
 1. Open your integration project in WSO2 Integrator.
 2. Click **+ Add Artifact** from the project view, or right-click the project tree.
 
-![Artifacts page in WSO2 Integrator showing all artifact categories.](/img/genai/develop/shared/07-artifacts-page-full.png)
+![Artifacts page in WSO2 Integrator showing all artifact categories.](/img/genai/develop/agents/creating-an-agent/01-artifacts-page-full.png)
 
 ## Create a chat agent
 
 Under **AI Integration**, select **AI Chat Agent**. Enter a **Name** for the agent and click **Create**.
 
-![The empty AI Chat Agent wizard with a Name field and a disabled Create button.](/img/genai/develop/agents/01-create-ai-chat-agent-wizard.png)
+![The empty AI Chat Agent wizard with a Name field and a disabled Create button.](/img/genai/develop/agents/creating-an-agent/02-create-ai-chat-agent-wizard.png)
 
 | Field | Required | Description |
 |---|---|---|
@@ -50,7 +50,7 @@ When the wizard completes, WSO2 Integrator automatically generates the following
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![The AI agent canvas showing Start, an AI agent node with the agent name and an Add Memory button, and a Return node.](/img/genai/develop/agents/02-agent-flow-canvas.png)
+![The AI Agent canvas showing the AI Agent node with its name, an Add Memory button, a role and instructions preview, and a connection to the model provider.](/img/genai/develop/agents/creating-an-agent/03-agent-flow-canvas.png)
 
 </TabItem>
 
@@ -109,7 +109,7 @@ You can add an inline agent within integration flows, REST APIs, GraphQL resolve
 2. In the editor, open the **AI** section in the side panel and select **Agent**.
 3. Click **+ Add Agent** to open the agent creation panel.
 
-![Agent creation form](/img/genai/develop/agents/39-agent-creation-form.png)
+![Empty agent creation panel with Role, Instructions, Query, and Result fields.](/img/genai/develop/agents/creating-an-agent/04-inline-agent-creation-form-empty.png)
 
 4. Configure the **Role** and **Instructions** fields to define the agent’s behavior.
 5. Specify the query or prompt to the agent in the **Query** field. Note that this can also be an expression (e.g., a parameter, a variable, etc.).
@@ -118,7 +118,7 @@ You can add an inline agent within integration flows, REST APIs, GraphQL resolve
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![Agent creation form](/img/genai/develop/agents/40-agent.png)
+![Agent creation panel filled in with Role, Instructions, and Query set to the user's input.](/img/genai/develop/agents/creating-an-agent/05-inline-agent-creation-form-filled.png)
 
 </TabItem>
 

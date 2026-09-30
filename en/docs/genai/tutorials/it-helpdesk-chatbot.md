@@ -133,8 +133,8 @@ The tool you add in Step 4 searches `kbArticles` by matching `tags` against the 
 <ThemedImage
     alt="Artifacts page with Chat Agent Service highlighted under AI Integration, alongside Durable Agentic Workflow and MCP Service"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/01-artifacts-chat-agent-service.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/01-artifacts-chat-agent-service.png'),
     }}
 />
 
@@ -159,8 +159,8 @@ Rules:
 <ThemedImage
     alt="Create Chat Agent Service form with Role set to itHelpDesk, Instructions filled in, Model set to Default WSO2 Model Provider, and Maximum Iterations defaulting to INFER_TOOL_COUNT"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/02-chat-agent-form.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/02-chat-agent-form.png'),
     }}
 />
 
@@ -172,8 +172,8 @@ Rules:
 <ThemedImage
     alt="Bottom of the Create Chat Agent Service form with Agent Name set to itHelpDeskAgent and Service Base Path set to /it-helpdesk"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/03-agent-name-base-path.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/03-agent-name-base-path.png'),
     }}
 />
 
@@ -182,8 +182,8 @@ This creates an **AI Agent Service** with a `POST /chat` resource and a `chatAge
 <ThemedImage
     alt="AI Agent node for itHelpDeskAgent connected to the model provider, with an Add Memory button and a + icon for adding tools"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-4.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/create-agent-4.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/04-agent-canvas-empty.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/04-agent-canvas-empty.png'),
     }}
 />
 
@@ -238,8 +238,8 @@ service /it\-helpdesk on chatAgentListener {
 <ThemedImage
     alt="Add Tool panel listing Use Connection, Use Function, Use Agent, Use MCP Server, and Create Custom Tool (highlighted), each with a short description"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/05-add-tool-panel-custom.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/05-add-tool-panel-custom.png'),
     }}
 />
 
@@ -252,8 +252,8 @@ service /it\-helpdesk on chatAgentListener {
 <ThemedImage
     alt="Add Tool - Create Custom Tool form with Name searchKnowledgeBase, a string query parameter, and Return Type string"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/06-create-custom-tool-form.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/06-create-custom-tool-form.png'),
     }}
 />
 
@@ -262,8 +262,8 @@ service /it\-helpdesk on chatAgentListener {
 <ThemedImage
     alt="Agent Tool searchKnowledgeBase flow: declaring normalizedQuery and bestMatch, looping over kbArticles and their tags to update bestMatch, then returning bestMatch.content or a fallback message"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-tool-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/07-search-kb-tool-flow.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/07-search-kb-tool-flow.png'),
     }}
 />
 
@@ -313,8 +313,8 @@ isolated function searchKnowledgeBase(string query) returns string {
 <ThemedImage
     alt="Configure Memory panel with Select Memory set to Short Term Memory and no memory store created yet"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/08-configure-memory-panel.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/08-configure-memory-panel.png'),
     }}
 />
 
@@ -323,8 +323,8 @@ isolated function searchKnowledgeBase(string query) returns string {
 <ThemedImage
     alt="Create Memory Store panel with MS SQL Client bound to configurable host, user, password, database, and port values"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/09-mssql-memory-store-form.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/09-mssql-memory-store-form.png'),
     }}
 />
 
@@ -333,8 +333,8 @@ isolated function searchKnowledgeBase(string query) returns string {
 <ThemedImage
     alt="Bottom of the Create Memory Store panel with Memory Store Name set and Result Type locked to mssql:ShortTermMemoryStore"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/10-memory-store-name-result-type.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/10-memory-store-name-result-type.png'),
     }}
 />
 
@@ -343,8 +343,8 @@ isolated function searchKnowledgeBase(string query) returns string {
 <ThemedImage
     alt="Configure Memory panel with Store set to the newly created mssqlShorttermmemorystore and the AI Agent canvas showing a Memory node attached"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-4.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/add-memory-4.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/11-agent-with-memory-attached.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/11-agent-with-memory-attached.png'),
     }}
 />
 
@@ -433,8 +433,8 @@ final ai:ShortTermMemory aiShorttermmemory = check new (mssqlShorttermmemorystor
 <ThemedImage
     alt="Chat Agent Service resource flow alongside the Agent Chat panel showing the VPN troubleshooting conversation"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/12-chat-test-vpn.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/12-chat-test-vpn.png'),
     }}
 />
 
@@ -443,8 +443,8 @@ final ai:ShortTermMemory aiShorttermmemory = check new (mssqlShorttermmemorystor
 <ThemedImage
     alt="Agent Chat panel's info popover showing Session ID (redacted) and Chat Endpoint"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/13-chat-session-id-popover.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/13-chat-session-id-popover.png'),
     }}
 />
 
@@ -459,8 +459,8 @@ curl -X POST http://localhost:9090/it-helpdesk/chat \
 <ThemedImage
     alt="Terminal showing the service restarting, then a curl request with a redacted session ID whose response confirms the agent still remembers the VPN issue"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/run-and-test-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/14-restart-session-persistence.png'),
+        dark: useBaseUrl('/img/genai/tutorials/it-helpdesk-chatbot/14-restart-session-persistence.png'),
     }}
 />
 

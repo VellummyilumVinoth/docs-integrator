@@ -34,8 +34,8 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 <ThemedImage
     alt="Artifacts page listing artifact types such as Automation, AI Integration, and Integration as API, with HTTP Service highlighted"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/artifacts-picker.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/artifacts-picker.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/01-artifacts-picker.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/01-artifacts-picker.png'),
     }}
 />
 
@@ -46,8 +46,8 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 <ThemedImage
     alt="Empty HTTP Service view with base path / and the default listener"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/create-http-service.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/create-http-service.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/02-create-http-service.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/02-create-http-service.png'),
     }}
 />
 
@@ -63,8 +63,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="Sentiment enum with POSITIVE, NEGATIVE, and NEUTRAL members"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/create-sentiment-type.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/create-sentiment-type.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/03-create-sentiment-type.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/03-create-sentiment-type.png'),
     }}
 />
 
@@ -79,8 +79,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="Define Payload popup with Create Type Schema selected, name set to AnalyzePayload, and a text field of type string"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/define-payload-popup.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/define-payload-popup.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/04-define-payload-popup.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/04-define-payload-popup.png'),
     }}
 />
 
@@ -90,8 +90,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="POST analyze resource configured with the AnalyzePayload request body"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-post-resource.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-post-resource.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/05-add-post-resource.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/05-add-post-resource.png'),
     }}
 />
 
@@ -107,8 +107,8 @@ The resource opens as a visual flow with **Start** connected to an **Error Handl
 <ThemedImage
     alt="Model Providers panel showing aiWso2modelprovider added to the flow between Start and Error Handler"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-model-provider.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-model-provider.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/06-add-model-provider.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/06-add-model-provider.png'),
     }}
 />
 
@@ -121,8 +121,8 @@ The resource opens as a visual flow with **Start** connected to an **Error Handl
 <ThemedImage
     alt="Configuring the generate action with the classification prompt and SentimentResult as the expected return type"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-prompt-and-return-type.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/add-prompt-and-return-type.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/07-add-prompt-and-return-type.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/07-add-prompt-and-return-type.png'),
     }}
 />
 
@@ -138,8 +138,8 @@ The flow now shows **Start**, **ai:generate**, **Return**, and the **Error Handl
 <ThemedImage
     alt="Final flow with Start, ai:generate, Return, the WSO2 model provider connection, and an Error Handler"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/final-view.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/final-view.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/08-final-view.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/08-final-view.png'),
     }}
 />
 
@@ -154,8 +154,8 @@ The flow now shows **Start**, **ai:generate**, **Return**, and the **Error Handl
 <ThemedImage
     alt="Running the integration and testing it with the Hurl Client Runner's Try It panel showing a 201 Created response with a POSITIVE sentiment and a confidence score"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/run-and-test.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/run-and-test.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/09-run-and-test.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/09-run-and-test.png'),
     }}
 />
 

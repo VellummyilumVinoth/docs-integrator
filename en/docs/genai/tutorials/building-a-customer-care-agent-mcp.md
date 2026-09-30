@@ -47,8 +47,8 @@ The agent receives customer messages over HTTP, reasons about which tool to call
 <ThemedImage
     alt="Artifacts page with Chat Agent Service highlighted under AI Integration, alongside Durable Agentic Workflow and MCP Service"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/01-artifacts-chat-agent-service.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/01-artifacts-chat-agent-service.png'),
     }}
 />
 
@@ -69,8 +69,8 @@ Keep responses friendly and concise. Include relevant IDs (order ID, return ID) 
 <ThemedImage
     alt="Create Chat Agent Service form with Role, Instructions, Model set to Default WSO2 Model Provider, and Maximum Iterations defaulting to INFER_TOOL_COUNT"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/02-chat-agent-form.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/02-chat-agent-form.png'),
     }}
 />
 
@@ -86,8 +86,8 @@ Keep responses friendly and concise. Include relevant IDs (order ID, return ID) 
 <ThemedImage
     alt="Bottom of the Create Chat Agent Service form with Agent Name set to CustomerCareAgent and Service Base Path set to /customer-care-agent"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/03-agent-name-base-path.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/03-agent-name-base-path.png'),
     }}
 />
 
@@ -96,8 +96,8 @@ This creates an **AI Agent Service** with a `POST /chat` resource and a `chatAge
 <ThemedImage
     alt="AI Agent node for CustomerCareAgent connected to the model provider, with an Add Memory button and a + icon for adding tools"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-4.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/create-agent-4.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/04-agent-canvas-empty.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/04-agent-canvas-empty.png'),
     }}
 />
 
@@ -110,8 +110,8 @@ Select the **+** at the bottom-right corner of the **AI Agent** node. The **Add 
 <ThemedImage
     alt="Add Tool panel listing Use Connection, Use Function, Use Agent, Use MCP Server (highlighted), and Create Custom Tool, each with a short description"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-1.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/05-add-tool-panel-mcp.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/05-add-tool-panel-mcp.png'),
     }}
 />
 
@@ -123,8 +123,8 @@ Select the **+** at the bottom-right corner of the **AI Agent** node. The **Add 
 <ThemedImage
     alt="Add Tool - Use MCP Server panel with Server URL set to http://localhost:8080/mcp and Requires Authentication unchecked"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-2.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-2.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/06-mcp-server-url-form.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/06-mcp-server-url-form.png'),
     }}
 />
 
@@ -137,8 +137,8 @@ The MCP toolkit appears as `aiMcpbasetoolkit` attached to the agent node, connec
 <ThemedImage
     alt="The completed agent flow showing the AI Agent node connected by a dashed line to the aiMcpbasetoolkit"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-3.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/add-mcp-3.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/07-agent-with-mcp-toolkit.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/07-agent-with-mcp-toolkit.png'),
     }}
 />
 
@@ -157,8 +157,8 @@ Try the following messages to exercise all three tools:
 <ThemedImage
     alt="Chat Agent Service resource flow (Start, agent:run, Return) alongside the Agent Chat panel showing a question about order ORD-042 and the agent's answer"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/run-and-test.png'),
-        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/run-and-test.png'),
+        light: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/08-chat-test-order-status.png'),
+        dark: useBaseUrl('/img/genai/tutorials/customer-care-agent-mcp/08-chat-test-order-status.png'),
     }}
 />
 

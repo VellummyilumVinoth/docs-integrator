@@ -45,7 +45,7 @@ An **Automation** runs on integration startup. It is the right artifact type for
 1. On the **Design** tab, select **Add Artifact manually** (below the WSO2 Integrator Copilot's quick-start cards). If the project already has other artifacts, this same button appears directly as **+ Add Artifact** instead.
 2. On the Artifacts page, select **Automation** and click **Create**.
 
-    ![Artifacts page with Automation selected, showing the artifact-type filter tabs (All, Automation, Workflow, AI, API, Event, File, Other).](/img/genai/develop/rag/01-rag-ingestion-artifacts.png)
+    ![Artifacts page with Automation selected, showing the artifact-type filter tabs (All, Automation, Workflow, AI, API, Event, File, Other).](/img/genai/develop/rag/rag-ingestion/01-rag-ingestion-artifacts.png)
 
 ---
 
@@ -57,7 +57,7 @@ A **Text Data Loader** reads a file from disk and wraps its content as an `ai:Do
 2. Go to **AI > RAG > Data Loader**.
 3. Click **Add Data Loader**. The picker lists **Text Data Loader** and **Microsoft SharePoint Text Data Loader**. Select **Text Data Loader**.
 
-    ![Data Loaders picker listing Text Data Loader and Microsoft SharePoint Text Data Loader, with Text Data Loader selected.](/img/genai/develop/rag/02-add-dataloader.png)
+    ![Data Loaders picker listing Text Data Loader and Microsoft SharePoint Text Data Loader, with Text Data Loader selected.](/img/genai/develop/rag/rag-ingestion/02-add-dataloader.png)
 
 4. In the configuration panel, the **Data Loader Name** field auto-fills a generated name (for example `aiTextdataloader`). Rename it to something descriptive, and set **Paths**:
 
@@ -67,7 +67,7 @@ A **Text Data Loader** reads a file from disk and wraps its content as an `ai:Do
     | **Data Loader Name** | A variable name for the loader, for example `loader` |
     | **Result Type** | The variable type, locked to `ai:TextDataLoader`. |
 
-    ![Text Data Loader configuration form with Paths set to a relative file path, Data Loader Name set to loader, and Result Type ai:TextDataLoader.](/img/genai/develop/rag/03-dataloader-form.png)
+    ![Text Data Loader configuration form with Paths set to a relative file path, Data Loader Name set to loader, and Result Type ai:TextDataLoader.](/img/genai/develop/rag/rag-ingestion/03-dataloader-form.png)
 
 5. Click **Save**.
 
@@ -81,17 +81,17 @@ Call the loader's `load` function to execute the read and get back an `ai:Docume
 
 1. Click on the `loader` connection and select the **Load** action, *"Loads documents as TextDocuments from a source."*
 
-    ![loader connection expanded showing the Load action with its tooltip.](/img/genai/develop/rag/04-call-load-action.png)
+    ![loader connection expanded showing the Load action with its tooltip.](/img/genai/develop/rag/rag-ingestion/04-call-load-action.png)
 
 2. In the form that appears, set the result variable name, for example `documents`.
 
     `ai:Document` is a generic content container. It holds the raw text from the source plus optional metadata (file name, URL, category) that you can use to filter results during retrieval.
 
-    ![Load action form with result variable name set to documents.](/img/genai/develop/rag/05-load-form.png)
+    ![Load action form with result variable name set to documents.](/img/genai/develop/rag/rag-ingestion/05-load-form.png)
 
 3. Click **Save**.
 
-    ![Flow editor showing the load action node added to the automation flow.](/img/genai/develop/rag/06-load-node.png)
+    ![Flow editor showing the load action node added to the automation flow.](/img/genai/develop/rag/rag-ingestion/06-load-node.png)
 
 ---
 
@@ -102,7 +102,7 @@ The **Vector Knowledge Base** owns the three pluggable parts of a RAG store: a v
 1. Click **+** to add a node.
 2. Go to **AI > RAG > Knowledge Base**. Click **Add Knowledge Base**. The picker lists **Vector Knowledge Base**, **Azure AI Search Knowledge Base**, and **WSO2 Cloud Knowledge Base**. Select **Vector Knowledge Base**.
 
-    ![Knowledge Bases picker listing Vector Knowledge Base, Azure AI Search Knowledge Base, and WSO2 Cloud Knowledge Base.](/img/genai/develop/rag/07-knowledge-base.png)
+    ![Knowledge Bases picker listing Vector Knowledge Base, Azure AI Search Knowledge Base, and WSO2 Cloud Knowledge Base.](/img/genai/develop/rag/rag-ingestion/07-knowledge-base.png)
 
 3. The **ai : Vector Knowledge Base** form opens with three required building blocks, each created inline:
 
@@ -115,7 +115,7 @@ The **Vector Knowledge Base** owns the three pluggable parts of a RAG store: a v
 
     Each inline creation returns you to this form with the field filled in, and the new connection also appears in the left **Connections** tree.
 
-    ![Completed ai : Vector Knowledge Base form with Vector Store, Embedding Model, Chunker set to AUTO, and Knowledge Base Name filled in.](/img/genai/develop/rag/08-vector-knowledge-base-form.png)
+    ![Completed ai : Vector Knowledge Base form with Vector Store, Embedding Model, Chunker set to AUTO, and Knowledge Base Name filled in.](/img/genai/develop/rag/rag-ingestion/08-vector-knowledge-base-form.png)
 
 4. Click **Save**.
 
@@ -138,15 +138,15 @@ Call `ingest` on the knowledge base to chunk, embed, and persist the loaded docu
 1. Click **+** after the knowledge base creation node.
 2. Select the `aiVectorknowledgebase` connection and choose **Ingest**, *"Indexes a collection of chunks. Converts each chunk to an embedding and stores it in the vector store, making the chunk searchable through the retriever."*
 
-    ![aiVectorknowledgebase connection expanded showing Ingest, Retrieve, and Delete By Filter actions, with the Ingest tooltip visible.](/img/genai/develop/rag/09-ingest-action.png)
+    ![aiVectorknowledgebase connection expanded showing Ingest, Retrieve, and Delete By Filter actions, with the Ingest tooltip visible.](/img/genai/develop/rag/rag-ingestion/09-ingest-action.png)
 
 3. The **Documents** field defaults to **Record** mode. Switch it to **Expression** mode and set it to the `documents` variable from Step 3.
 
-    ![Ingest action form with the Documents field in Expression mode, set to the documents variable.](/img/genai/develop/rag/10-ingest-doc-form.png)
+    ![Ingest action form with the Documents field in Expression mode, set to the documents variable.](/img/genai/develop/rag/rag-ingestion/10-ingest-doc-form.png)
 
 4. Click **Save**.
 
-    ![Flow editor showing the ingest node added after the knowledge base node.](/img/genai/develop/rag/11-with-ingest-node.png)
+    ![Flow editor showing the ingest node added after the knowledge base node.](/img/genai/develop/rag/rag-ingestion/11-with-ingest-node.png)
 
 The `ingest` action:
 
@@ -166,7 +166,7 @@ Add a **Log Info** node (under **Logging** in the Add Node panel, tooltip *"Prin
 
 This is optional but useful during development and when the automation runs on a schedule.
 
-![Completed RAG ingestion flow: Start, ai:load, ai:ingest, log:printInfo, and Error Handler.](/img/genai/develop/rag/12-full-rag-ingestion-pipeline.png)
+![Completed RAG ingestion flow: Start, ai:load, ai:ingest, log:printInfo, and Error Handler.](/img/genai/develop/rag/rag-ingestion/12-full-rag-ingestion-pipeline.png)
 
 ---
 
@@ -180,7 +180,7 @@ Watch the terminal output for the log message. If the run fails with `File does 
 - The WSO2 model provider is configured (`Ballerina: Configure default WSO2 model provider`).
 - The embedding provider and vector store are reachable (for external stores).
 
-    ![Terminal output showing the RAG ingestion integration completed successfully with the "RAG ingestion complete." log message.](/img/genai/develop/rag/13-run-rag-ingestion-pipeline.png)
+    ![Terminal output showing the RAG ingestion integration completed successfully with the "RAG ingestion complete." log message.](/img/genai/develop/rag/rag-ingestion/13-run-rag-ingestion-pipeline.png)
 
 ---
 
