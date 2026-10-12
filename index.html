@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8" />
+  <title>WSO2 Integration Platform Documentation</title>
+  <!--
+    Deployed to the bare root of the shared staging tree
+    (/integration-platform/docs/) by the "Deploy root redirect (root of
+    staging)" step in staging_sync.yaml -- separately from the saas
+    Docusaurus build itself. From there, promote_to_production.yaml
+    (on `main`) ships the whole staging tree byte-for-byte to gh-pages,
+    root redirect included, with no rebuild -- so this file only needs
+    to be wired into staging_sync.yaml, not into production's deploy
+    path directly. saas moved from owning that root outright to its own
+    /saas/ subpath (matching /integrator/ and /connectors/), so
+    something has to answer for the bare root instead of it 404ing.
+    This is that something: an immediate redirect to /saas/, not a real
+    landing page -- meta-refresh AND a JS fallback so it still works
+    with JS disabled, and a canonical link so it doesn't get indexed as
+    a second copy of the saas homepage.
+
+    Keep the target path here in sync BY HAND with the saas `base_url`
+    entry in staging_sync.yaml if it ever changes -- there's no build
+    step wiring this to that workflow.
+  -->
+  <meta http-equiv="refresh" content="0; url=/docs-integrator/saas/" />
+  <link rel="canonical" href="/docs-integrator/saas/" />
+  <meta name="robots" content="noindex" />
+  <script>
+    location.replace('/docs-integrator/saas/');
+  </script>
+</head>
+<body>
+  <p>Redirecting to the <a href="/docs-integrator/saas/">WSO2 Integration Platform documentation</a>&hellip;</p>
+</body>
+</html>
