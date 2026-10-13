@@ -10,6 +10,7 @@ A **Voice Agent Service** exposes an [AI agent](../agents/agents.md) over a voic
 
 | | Chat Agent Service | Voice Agent Service |
 |---|---|---|
+| Transport | HTTP (REST) | WebSocket |
 | Listener | `ai:Listener` | `integration:CloudVoiceListener` |
 | Service type | `ai:ChatService` | `integration:VoiceService` |
 | Handler | `resource function post chat` | `remote function onChatMessage` |
