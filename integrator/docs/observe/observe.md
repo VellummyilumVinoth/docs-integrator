@@ -88,6 +88,7 @@ flowchart LR
     <PaletteChip href="/observe/open-source/zipkin">Zipkin
     <PaletteChip href="/observe/open-source/elastic-stack-elk">Elastic Stack (ELK)
     <PaletteChip href="/observe/open-source/opensearch">OpenSearch
+    <PaletteChip href="/observe/open-source/opentelemetry">OpenTelemetry
 
 
 <PaletteCard icon="cloud">

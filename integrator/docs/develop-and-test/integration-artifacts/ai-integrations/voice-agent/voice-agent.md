@@ -64,6 +64,8 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
 
 `onChatMessage` receives an `integration:ChatMessage` (the transcribed speech, with a session ID for the call) and must return the text to speak back to the caller.
 
+This example uses `customerSupportAgent`, a customer support agent that's already built in the project. It checks order status, explains the return policy, and creates support tickets.
+
 1. On the `onChatMessage` flow, open the node panel and select **Agent** under the **AI** section.
 
 <ThemedImage
@@ -74,10 +76,10 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
     }}
 />
 
-2. Select an existing agent from the list, or create a new one. The steps for configuring the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) are the same for voice agents. See [Creating an Agent](../agents/create-an-agent.md) for instructions.
+2. Select an existing agent from the list, or create a new one. You can reuse an agent you already expose through a Chat Agent Service. The steps for configuring the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) are the same for voice agents. See [Creating an Agent](../agents/create-an-agent.md) for instructions.
 
 <ThemedImage
-    alt="Agents picker listing one existing agent, mathTutorAgent, under an Agent section with a plus button to create a new one."
+    alt="Agents picker listing one existing agent, customerSupportAgent, under an Agent section with a plus button to create a new one."
     sources={{
         light: useBaseUrl('/img/genai/develop/voice-agent-v5.1/05-agents-picker-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/voice-agent-v5.1/05-agents-picker-v5.1.png'),
@@ -97,26 +99,14 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
 4. Return the Result from the flow instead of the placeholder error.
 
 <ThemedImage
-    alt="onChatMessage flow showing Start connected to an agent colon run node calling mathTutorAgent and producing response, connected to a Return node that returns response."
+    alt="onChatMessage flow showing Start connected to an agent colon run node calling customerSupportAgent and producing response, connected to a Return node that returns response."
     sources={{
         light: useBaseUrl('/img/genai/develop/voice-agent-v5.1/07-onchatmessage-wired-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/voice-agent-v5.1/07-onchatmessage-wired-v5.1.png'),
     }}
 />
 
-The agent itself is configured the same way regardless of channel. Opening `mathTutorAgent` shows the usual AI Agent canvas: a system prompt, a model provider, memory, and tools.
-
-<ThemedImage
-    alt="mathTutorAgent AI Agent canvas showing a Math Tutor Assistant system prompt, ShortTermMemory, a connection to a model provider, and six tools: sumTool, subtractTool, multiplyTool, divideTool, messageToAdmin, and reportuserInfo."
-    sources={{
-        light: useBaseUrl('/img/genai/develop/voice-agent-v5.1/08-mathtutoragent-detail-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/voice-agent-v5.1/08-mathtutoragent-detail-v5.1.png'),
-    }}
-/>
-
-WSO2 Integrator splits the generated source across files in the project. For a voice agent named `mathTutorAgent`, it is similar to the following:
-
-**main.bal**: the voice listener and service
+The generated `main.bal` is similar to the following:
 
 ```ballerina
 import ballerinax/ai.wso2.integration;
@@ -125,53 +115,10 @@ listener integration:CloudVoiceListener voiceListener = new (8080);
 
 isolated service integration:VoiceService on voiceListener {
     isolated remote function onChatMessage(integration:ChatMessage message) returns string|error {
-        string response = check mathTutorAgent.run(message.message, message.sessionId);
+        string response = check customerSupportAgent.run(message.message, message.sessionId);
         return response;
     }
 }
-```
-
-**agents.bal**: the agent, its memory, and its tools
-
-```ballerina
-import ballerina/ai;
-
-final ai:Agent mathTutorAgent = check new (
-    systemPrompt = {
-        role: string `Math Tutor Assistant`,
-        instructions: string `You are a math tutor assistant.
-You MUST use the provided mathematical tools (add, subtract, multiply, divide) for ALL calculations.
-Provide clear, step-by-step explanations. Include the final answer at the end.`
-    }, memory = aiShorttermmemory, model = mathTutorModel, tools = [sumTool, subtractTool, multiplyTool, divideTool]
-);
-
-# Calculates the sum of two numbers
-#
-# + num1 - The first number
-# + num2 - The second number
-# + return - The sum of num1 and num2
-@ai:AgentTool
-isolated function sumTool(float num1, float num2) returns float {
-    return num1 + num2;
-}
-
-// subtractTool, multiplyTool, and divideTool follow the same pattern.
-
-final ai:ShortTermMemory aiShorttermmemory = check new (aiInmemoryshorttermmemorystore);
-
-final ai:InMemoryShortTermMemoryStore aiInmemoryshorttermmemorystore = check new (20);
-```
-
-**connections.bal** and **config.bal**: the model provider and its API key
-
-```ballerina
-import ballerinax/ai.openai;
-
-final openai:ModelProvider mathTutorModel = check new (accessToken, openai:GPT_4O_MINI);
-```
-
-```ballerina
-configurable string accessToken = ?;
 ```
 
 Pass `message.sessionId` as the session key so the agent's memory tracks each call separately. Without it, every caller shares the same conversation history.
@@ -181,10 +128,10 @@ Pass `message.sessionId` as the session key so the agent's memory tracks each ca
 The voice listener only accepts calls once it's deployed. From the project overview, under **Deployment Options**, the wired integration shows `voiceListener` connected to the Voice Service, which is connected to the agent's model provider:
 
 <ThemedImage
-    alt="Project overview canvas showing voiceListener connected to the Voice Service onChatMessage handler, which is connected to a mathTutorModel model provider, with a Deployment Options panel on the right offering Deploy to WSO2 Cloud, Deploy with Docker, and Deploy on a VM."
+    alt="Project overview canvas showing voiceListener connected to the Voice Service onChatMessage handler, which is connected to a supportModel model provider, with a Deployment Options panel on the right offering Deploy to WSO2 Cloud, Deploy with Docker, and Deploy on a VM."
     sources={{
-        light: useBaseUrl('/img/genai/develop/voice-agent-v5.1/09-design-canvas-deploy-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/voice-agent-v5.1/09-design-canvas-deploy-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/voice-agent-v5.1/08-design-canvas-deploy-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/voice-agent-v5.1/08-design-canvas-deploy-v5.1.png'),
     }}
 />
 
