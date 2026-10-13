@@ -4,19 +4,19 @@ title: Voice Agent
 
 # Voice Agent
 
-A **Voice Agent Service** exposes an [AI agent](../agents/agents.md) over a voice channel instead of a chat endpoint. WSO2 Integrator hosts the voice connection for you. Your service only handles the transcribed message and returns a text reply, the same way a Chat Agent Service does over HTTP.
+A **Voice Agent Service** exposes an [AI agent](../agents/agents.md) over a voice channel instead of a chat endpoint. WSO2 Integrator hosts the voice connection for you. Your service receives the caller's speech as transcribed text and returns a text reply. WSO2 Cloud converts that reply to speech and plays it back to the caller, so you never handle audio yourself.
 
 ## How it differs from a Chat Agent Service
 
 | | Chat Agent Service | Voice Agent Service |
 |---|---|---|
-| Listener | `http:Listener` | `voice:CloudVoiceListener` |
-| Service type | `http:Service` | `voice:VoiceService` |
-| Handler | `resource function` per HTTP method | `remote function onChatMessage` |
-| Input | HTTP request body | `voice:ChatMessage` (transcribed speech, with a session ID) |
-| Output | HTTP response | A string, spoken back to the caller through text-to-speech |
+| Listener | `ai:Listener` | `integration:CloudVoiceListener` |
+| Service type | `ai:ChatService` | `integration:VoiceService` |
+| Handler | `resource function post chat` | `remote function onChatMessage` |
+| Input | `ai:ChatReqMessage` (the user's message, with a session ID) | `integration:ChatMessage` (the transcribed speech, with a session ID) |
+| Output | `ai:ChatRespMessage` | `string`, spoken back to the caller through text-to-speech |
 
-Both wrap the same [`ai:Agent`](../agents/agents.md#components-of-an-ai-agent). Only the transport and the message shape differ.
+Both expose the same [`ai:Agent`](../agents/agents.md#components-of-an-ai-agent). They differ only in the transport and message format.
 
 ## Create a Voice Agent Service
 
@@ -47,7 +47,7 @@ Both wrap the same [`ai:Agent`](../agents/agents.md#components-of-an-ai-agent). 
 | **Listener Name** | Yes | Identifier for the voice listener, for example `voiceListener`. Reuse an existing listener instead if you already have one. |
 | **Port** | Yes | The port the listener runs on, as a number or an expression that shares a port with another WebSocket service. |
 
-5. Click **Create**. WSO2 Integrator generates a `voice:VoiceService` with one event handler, `onChatMessage`.
+5. Click **Create**. WSO2 Integrator generates an `integration:VoiceService` with one event handler, `onChatMessage`.
 
 <ThemedImage
     alt="Voice Service editor showing Listener: voiceListener and an Event Handlers section listing a single event named onChatMessage."
@@ -61,7 +61,7 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
 
 ## Wire an agent into onChatMessage
 
-`onChatMessage` receives a `voice:ChatMessage` (the transcribed speech, with a session ID for the call) and must return the text to speak back to the caller.
+`onChatMessage` receives an `integration:ChatMessage` (the transcribed speech, with a session ID for the call) and must return the text to speak back to the caller.
 
 1. On the `onChatMessage` flow, open the node panel and select **Agent** under the **AI** section.
 
@@ -73,7 +73,7 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
     }}
 />
 
-2. Select an existing agent from the list, or create a new one. See [Creating an Agent](../agents/create-an-agent.md) for the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) steps — they're identical for a voice agent.
+2. Select an existing agent from the list, or create a new one. The steps for configuring the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) are the same for voice agents. See [Creating an Agent](../agents/create-an-agent.md) for instructions.
 
 <ThemedImage
     alt="Agents picker listing one existing agent, mathTutorAgent, under an Agent section with a plus button to create a new one."
@@ -83,7 +83,7 @@ Opening `onChatMessage` shows an empty flow: **Start** connected directly to **R
     }}
 />
 
-3. Configure the node: bind **Query** to the incoming message, **Session ID** to the call's session, and name the **Result**.
+3. Configure the AI Agent node: bind **Query** to the incoming message, **Session ID** to the call's session, and name the **Result**.
 
 <ThemedImage
     alt="AI Agent node configuration panel with Query set to message.message, Session ID set to message.sessionId, Context left at its default new record, and Result named response."
@@ -113,42 +113,64 @@ The agent itself is configured the same way regardless of channel. Opening `math
     }}
 />
 
-The generated Ballerina source for a voice agent named `mathTutorAgent` is similar to the following:
+WSO2 Integrator splits the generated source across files in the project. For a voice agent named `mathTutorAgent`, it is similar to the following:
+
+**main.bal**: the voice listener and service
 
 ```ballerina
-import ballerinax/ai.wso2.integration as voice;
+import ballerinax/ai.wso2.integration;
+
+listener integration:CloudVoiceListener voiceListener = new (8080);
+
+isolated service integration:VoiceService on voiceListener {
+    isolated remote function onChatMessage(integration:ChatMessage message) returns string|error {
+        string response = check mathTutorAgent.run(message.message, message.sessionId);
+        return response;
+    }
+}
+```
+
+**agents.bal**: the agent, its memory, and its tools
+
+```ballerina
 import ballerina/ai;
-import ballerinax/ai.openai;
-
-final openai:ModelProvider mathTutorModel =
-    check new (accessToken, openai:GPT_4O_MINI);
-
-final ai:ShortTermMemory aiShorttermmemory =
-    check new (aiInmemoryshorttermmemorystore);
-
-final ai:InMemoryShortTermMemoryStore aiInmemoryshorttermmemorystore =
-    check new (20);
 
 final ai:Agent mathTutorAgent = check new (
     systemPrompt = {
         role: string `Math Tutor Assistant`,
         instructions: string `You are a math tutor assistant.
-Use the provided tools for every calculation.
-Provide clear, step-by-step explanations.`
-    },
-    memory = aiShorttermmemory,
-    model = mathTutorModel,
-    tools = [sumTool, subtractTool, multiplyTool, divideTool]
+You MUST use the provided mathematical tools (add, subtract, multiply, divide) for ALL calculations.
+Provide clear, step-by-step explanations. Include the final answer at the end.`
+    }, memory = aiShorttermmemory, model = mathTutorModel, tools = [sumTool, subtractTool, multiplyTool, divideTool]
 );
 
-listener voice:CloudVoiceListener voiceListener = new (8080);
-
-isolated service voice:VoiceService on voiceListener {
-    isolated remote function onChatMessage(voice:ChatMessage message)
-            returns string|error {
-        return check mathTutorAgent.run(message.message, message.sessionId);
-    }
+# Calculates the sum of two numbers
+#
+# + num1 - The first number
+# + num2 - The second number
+# + return - The sum of num1 and num2
+@ai:AgentTool
+isolated function sumTool(float num1, float num2) returns float {
+    return num1 + num2;
 }
+
+// subtractTool, multiplyTool, and divideTool follow the same pattern.
+
+final ai:ShortTermMemory aiShorttermmemory = check new (aiInmemoryshorttermmemorystore);
+
+final ai:InMemoryShortTermMemoryStore aiInmemoryshorttermmemorystore = check new (20);
+```
+
+**connections.bal** and **config.bal**: the model provider and its API key
+
+```ballerina
+import ballerinax/ai.openai;
+
+final openai:ModelProvider mathTutorModel = check new (accessToken, openai:GPT_4O_MINI);
+```
+
+```ballerina
+configurable string accessToken = ?;
 ```
 
 Pass `message.sessionId` as the session key so the agent's memory tracks each call separately. Without it, every caller shares the same conversation history.
@@ -165,11 +187,11 @@ The voice listener only accepts calls once it's deployed. From the project overv
     }}
 />
 
-Click **Deploy** under **Deploy to WSO2 Cloud**, pick the organization and project, and connect a Git remote if the project doesn't have one yet. This flow is identical for every artifact type — see [Deploy to WSO2 Cloud from WSO2 Integrator](../../../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md) for the full walkthrough (organization and project selection, initializing a repository, and publishing to GitHub).
+Click **Deploy** under **Deploy to WSO2 Cloud**, pick the organization and project, and connect a Git remote if the project doesn't have one yet. This flow is identical for every artifact type — see [Deploy to WSO2 Cloud from WSO2 Integrator](../../../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md) for the full walkthrough.
 
-Once deployed, WSO2 Cloud gives you a reachable address for the voice listener. Use it to connect your telephony or voice channel to the agent.
+Once deployed, enable voice for the integration in WSO2 Cloud. WSO2 Cloud runs the voice pipeline for you: callers connect over WebRTC, their speech is transcribed and sent to `onChatMessage`, and the reply is converted back to speech. You choose the speech-to-text and text-to-speech providers when you set it up. See [Voice Agents](https://wso2.com/integration-platform/docs/saas/manage/voice-agents) in the WSO2 Cloud documentation to configure and test the voice pipeline.
 
-See [Deploy with Docker](../../../../deploy-and-run/self-hosted/containerized-deployment.md) or [Deploy on a VM](../../../../deploy-and-run/self-hosted/vm-deployment.md) for self-hosted alternatives.
+The voice pipeline is available only on WSO2 Cloud. Deploying with Docker or on a VM runs the service, but callers can't reach it by voice.
 
 ## Common pitfalls
 
@@ -177,10 +199,11 @@ See [Deploy with Docker](../../../../deploy-and-run/self-hosted/containerized-de
 |---|---|---|
 | Caller hears silence or a generic error. | `onChatMessage` still returns `error("Not Implemented")`. | Add the Agent node and return its result, as shown above. |
 | Agent forgets earlier turns in the same call. | `message.sessionId` isn't passed to `agent.run()`, or no memory is attached. | Pass the session ID as the session key and attach a [memory store](../agents/memory.md). |
-| Works locally but callers can't reach it. | The voice listener hasn't been deployed. | Deploy to WSO2 Cloud, Docker, or a VM. |
+| Callers can't connect to the agent. | The integration isn't deployed to WSO2 Cloud, or voice isn't enabled for it. | Deploy to WSO2 Cloud and [enable voice for the integration](https://wso2.com/integration-platform/docs/saas/manage/voice-agents). |
 
 ## What's next
 
+- **[Voice Agents on WSO2 Cloud](https://wso2.com/integration-platform/docs/saas/manage/voice-agents)** — Configure the voice pipeline and test the agent with your voice.
 - **[Creating an Agent](../agents/create-an-agent.md)** — System prompt, tools, and memory shared by every agent type.
 - **[Tools](../agents/tools.md)** — Add functions, connectors, and integrations to the agent.
 - **[Memory](../agents/memory.md)** — Configure conversational and persistent memory.
