@@ -9,31 +9,35 @@ Voice agents are in feature preview. Behavior and configuration options may chan
 
 A voice agent lets users talk to an AI agent instead of typing. WSO2 Cloud deploys a voice pipeline in front of your AI agent: it streams the user's audio through [LiveKit](https://livekit.io/), converts speech to text, sends the text to the AI agent over WebSocket, and speaks the agent's reply back using a text-to-speech provider.
 
-You don't write any extra code. The voice pipeline is created and deployed as a separate integration from the AI agent's overview page.
+You don't write any extra code for the voice pipeline. It's created and deployed as a separate integration from the AI agent's overview page.
+
+:::tip Start here
+First, build the AI agent as a **Voice Agent Service** in WSO2 Integrator and deploy it to WSO2 Cloud. See [Voice Agent](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) for the steps. This page then covers adding the voice pipeline to that agent in WSO2 Cloud.
 
 :::info Prerequisites
 - A paid WSO2 Cloud subscription. On the free tier, **Enable Voice Agents** is disabled with the tooltip *Upgrade your plan to enable Voice Agents.*
-- An AI agent integration deployed in WSO2 Cloud that exposes a **WebSocket** endpoint. Without one, **Enable Voice Agents** is disabled with the tooltip *Add a WebSocket endpoint to this AI Agent to enable voice.* See [Expose an AI agent over WebSocket](#expose-an-ai-agent-over-websocket).
+- An AI agent integration deployed in WSO2 Cloud that exposes a **WebSocket** endpoint. Without one, **Enable Voice Agents** is disabled with the tooltip *Add a WebSocket endpoint to this AI Agent to enable voice.* Build it as a [Voice Agent Service](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) in WSO2 Integrator. See [Expose an AI agent over WebSocket](#expose-an-ai-agent-over-websocket).
 - A LiveKit project: the LiveKit URL (for example, `wss://your-project.livekit.cloud`), an API key, and an API secret. See [LiveKit credentials](https://docs.livekit.io/deploy/agents/secrets/#livekit-credentials).
 - API keys for your speech-to-text and text-to-speech providers. For OpenAI, create a key on the [OpenAI API keys](https://platform.openai.com/api-keys) page.
 
 ## Expose an AI agent over WebSocket
 
-The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. Attach the agent to a `voice:CloudVoiceListener` from the `ballerinax/ai.wso2.integration` package and implement `onChatMessage`:
+The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. In WSO2 Integrator, create a **Voice Agent Service** and call your agent from its `onChatMessage` handler. See [Voice Agent](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) for the full walkthrough. The generated code is similar to the following:
 
 ```ballerina
-import ballerinax/ai.wso2.integration as voice;
+import ballerinax/ai.wso2.integration;
 
-listener voice:CloudVoiceListener voiceListener = new (8080);
+listener integration:CloudVoiceListener voiceListener = new (8080);
 
-isolated service voice:VoiceService on voiceListener {
-    isolated remote function onChatMessage(voice:ChatMessage message) returns string|error {
-        return check mathTutorAgent.run(message.message, message.sessionId);
+isolated service integration:VoiceService on voiceListener {
+    isolated remote function onChatMessage(integration:ChatMessage message) returns string|error {
+        string response = check customerSupportAgent.run(message.message, message.sessionId);
+        return response;
     }
 }
 ```
 
-In this example, `mathTutorAgent` is an AI agent with `add`, `subtract`, `multiply`, and `divide` tools and short-term memory. Passing `message.sessionId` to the agent keeps the conversation context for the duration of a voice session.
+In this example, `customerSupportAgent` is a customer support agent with tools to check order status, explain the return policy, and create support tickets, plus short-term memory. Passing `message.sessionId` to the agent keeps the conversation context for the duration of a voice session.
 
 Deploy the integration to WSO2 Cloud so its WebSocket endpoint is running.
 
@@ -63,6 +67,15 @@ Write the agent's system prompt for speech: ask for short replies (one or two se
 
 ## Create a voice agent
 
+You can create a voice agent in two ways:
+
+- **[From the AI agent's overview page](#from-the-ai-agent-overview-page)**: the quickest option when the AI agent is deployed in WSO2 Cloud. The agent is preselected for you.
+- **[From AI Services > Voice Agents](#from-ai-services--voice-agents)**: lets you pick the project and the target agent yourself. The target can be an agent deployed in WSO2 Cloud (**Platform-Hosted Agent**) or any agent you host yourself that's reachable over WebSocket (**Externally-Hosted Agent**).
+
+Both options then continue through the same LiveKit, speech-to-text, text-to-speech, and deploy steps.
+
+### From the AI agent overview page
+
 Open the AI agent integration's **Overview** page and click **Enable Voice Agents** (on the right, under **Lifecycle Status**).
 
 <ThemedImage
@@ -73,9 +86,74 @@ Open the AI agent integration's **Overview** page and click **Enable Voice Agent
     }}
 />
 
-A four-step wizard opens. The current AI agent is preselected as the target, so you don't need to choose an agent.
+A four-step wizard opens. The current AI agent is preselected as the target, so there's no **Configure Agent** step: the wizard starts at [Configure LiveKit](#configure-livekit).
 
-### Step 1: Configure LiveKit
+<ThemedImage
+    alt="Four-step wizard opened from the AI agent, starting at Configure LiveKit"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-livekit-from-ai-agent-v5.1.png'),
+        dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-livekit-from-ai-agent-v5.1.png'),
+    }}
+/>
+
+### From AI Services > Voice Agents
+
+1. In the left navigation, expand **AI Services** and click **Voice Agents**. The page lists the voice agents in the selected project.
+
+    <ThemedImage
+        alt="Voice Agents under AI Services in the left navigation"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/ai-services-voice-agents-v5.1.png'),
+            dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/ai-services-voice-agents-v5.1.png'),
+        }}
+    />
+
+2. Click **Create**. A five-step wizard opens at **Configure Agent**.
+
+#### Configure agent
+
+1. Select the **Target Project**. The voice agent is created in this project.
+
+    <ThemedImage
+        alt="Configure Agent step with the target project selected"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-target-project-v5.1.png'),
+            dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-target-project-v5.1.png'),
+        }}
+    />
+
+2. Under **Target Agent**, choose where the agent that answers the caller runs:
+
+    - **Platform-Hosted Agent**: an AI agent that's already deployed in WSO2 Cloud, in the selected project. Pick it from **Select Agent**. The list shows only agents with a deployed WebSocket endpoint. WSO2 Cloud resolves the agent's WebSocket URL for you when it deploys the voice agent. This gives the same result as clicking **Enable Voice Agents** on that agent's overview page.
+
+        <ThemedImage
+            alt="Platform-Hosted Agent with an existing agent selected"
+            sources={{
+                light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-platform-hosted-v5.1.png'),
+                dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-platform-hosted-v5.1.png'),
+            }}
+        />
+
+    - **Externally-Hosted Agent**: any agent you host yourself, outside WSO2 Cloud, that's reachable over WebSocket. Enter its **WebSocket URL**, which must start with `wss://` (or `ws://` for local setups), for example a public tunnel URL such as `wss://<your-host>/voice-agent`. The voice agent uses this URL as `TARGET_AGENT_WS_URL`.
+
+        <ThemedImage
+            alt="Externally-Hosted Agent with the WebSocket URL field"
+            sources={{
+                light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-externally-hosted-v5.1.png'),
+                dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/configure-agent-externally-hosted-v5.1.png'),
+            }}
+        />
+
+    An externally hosted agent must follow the same WebSocket contract as a Voice Agent Service. The wizard summarizes it under **How your target agent should handle a message?**:
+
+    - Accept the `sessionId` as a query parameter on the WebSocket connection URL (for example, `wss://your-agent-host/path?sessionId=<id>`). It stays the same for the whole conversation.
+    - Accept each caller message as a plain-text WebSocket message containing only the caller's latest utterance, and reply with a plain-text WebSocket message.
+    - Signal failures by closing the WebSocket connection with an error close code and reason, instead of sending the error back as a regular message.
+
+3. Check the **Display Name** and **Name**. For a platform-hosted agent, they default to `<agent name> - Voice Agent`. Optionally, add a **Description**.
+4. Click **Next**.
+
+### Configure LiveKit
 
 LiveKit handles the real-time audio connection between the user's browser and the voice pipeline.
 
@@ -93,7 +171,7 @@ To find these values, see [LiveKit credentials](https://docs.livekit.io/deploy/a
     }}
 />
 
-### Step 2: Configure speech to text
+### Configure speech to text
 
 1. Select a speech-to-text (STT) provider: **Deepgram**, **AssemblyAI**, **Cartesia**, **ElevenLabs**, or **OpenAI**.
 2. Select the **Model** and **Language**.
@@ -108,7 +186,7 @@ To find these values, see [LiveKit credentials](https://docs.livekit.io/deploy/a
     }}
 />
 
-### Step 3: Configure text to speech
+### Configure text to speech
 
 1. Select a text-to-speech (TTS) provider: **Cartesia**, **ElevenLabs**, **Deepgram**, or **OpenAI**.
 2. Select the **Model**, **Voice**, and **Language**. Cartesia and ElevenLabs also accept a custom voice ID.
@@ -125,7 +203,7 @@ For OpenAI, the available models are **GPT-4o Mini TTS**, **TTS-1**, and **TTS-1
     }}
 />
 
-### Step 4: Tune and deploy
+### Tune and deploy
 
 The defaults work for most agents. Adjust them if needed:
 
@@ -158,13 +236,21 @@ Click **Deploy Voice Agent**.
     }}
 />
 
-WSO2 Cloud creates a new integration named **`<agent name> - Voice Agent`** (type **Voice Agent**) in the same project and deploys it to the Development environment. The voice agent connects to the AI agent's WebSocket URL through the `TARGET_AGENT_WS_URL` configuration. The AI agent's overview page now shows **Voice Agent Enabled**, which links to the new voice agent.
+WSO2 Cloud creates a new integration (type **Voice Agent**) in the project, named **`<agent name> - Voice Agent`** by default, and deploys it to the Development environment. The voice agent connects to the target agent's WebSocket URL through the `TARGET_AGENT_WS_URL` configuration. For a platform-hosted agent, the AI agent's overview page now shows **Voice Agent Enabled**, which links to the new voice agent.
 
 <ThemedImage
     alt="WSO2 Cloud creating the voice agent integration"
     sources={{
         light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/creating-voice-agent-v5.1.png'),
         dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/creating-voice-agent-v5.1.png'),
+    }}
+/>
+
+<ThemedImage
+    alt="AI agent overview page showing Voice Agent Enabled"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/voice-agent-enabled-v5.1.png'),
+        dark: useBaseUrl('/img/manage/cloud/voice-agents-v5.1/voice-agent-enabled-v5.1.png'),
     }}
 />
 
@@ -190,7 +276,7 @@ Each environment card on the voice agent's overview page has a **Voice Tester**.
     }}
 />
 
-1. Click **Start Session** and allow microphone access when the browser asks. The tester shows **LIVE** and **Conversation Active** when it's connected.
+1. Click **Start Session** and allow microphone access when the browser asks. The tester shows **LIVE** and *Speak into your microphone — the agent is listening.* when it's connected.
 
     <ThemedImage
         alt="Voice Agent Tester with a live session"
@@ -203,11 +289,11 @@ Each environment card on the voice agent's overview page has a **Voice Tester**.
 2. Speak to the agent. The transcript of the conversation appears in the tester, and you hear the agent's reply.
 3. Click **Stop Session** to end the conversation.
 
-For the math tutor example, try:
+For the customer support example, try:
 
-- *"Hi! What can you help me with?"*
-- *"What is 245 plus 378?"*
-- *"Now multiply that by twelve."*
+- *"Hi, what can you help me with?"*
+- *"Where is my order ORD-1001?"*
+- *"Can I return my coffee maker from order ORD-1003?"*
 
 <ThemedImage
     alt="Voice Agent Tester showing the conversation transcript"
@@ -240,7 +326,7 @@ The transcript is published as soon as the AI agent returns its full reply, but 
 
 ### The agent doesn't respond
 
-- Open the voice agent's **Development** card, click **Configure**, and check that `TARGET_AGENT_WS_URL` points to the AI agent's running WebSocket URL. When the voice agent is created, it prefers the AI agent's Production URL. If the AI agent isn't running in Production, set the Development URL manually and redeploy.
+- Open the voice agent's **Development** card, click **Configure**, and check that `TARGET_AGENT_WS_URL` points to the target agent's running WebSocket URL. For an externally hosted agent, this is the **WebSocket URL** you entered, so check that it's reachable from WSO2 Cloud. When the voice agent is created, it prefers the AI agent's Production URL. If the AI agent isn't running in Production, set the Development URL manually and redeploy.
 - Check the AI agent's own logs for errors, such as a missing LLM model or API key configuration.
 
 ### The session ends on its own
