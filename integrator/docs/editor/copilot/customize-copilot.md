@@ -28,7 +28,7 @@ Copilot organizes skills into three groups:
 
 - **Built-in**: Skills shipped with Copilot.
 - **Project**: Skills saved to your project under `.agents/skills`.
-- **User**: Skills saved to `~/.ballerina/copilot/skills`, available across all your projects.
+- **User**: Skills saved in your user folder and available across all your projects.
 
 ### Manage skills
 
@@ -49,9 +49,9 @@ Some built-in skills are always active and cannot be disabled.
 Open **Settings** in the Copilot panel, select the **Skills** row under **Customize Copilot**, and select **Add skill**.
 
 - **Create new**: Enter a **Name**, a **Trigger / Description** that tells Copilot when to use the skill, and an optional **Body** with detailed rules and instructions.
-- **Import**: Drag and drop or upload a `.md` file (with the skill name and description in YAML front matter) or a `.zip` or `.skill` file (containing a `SKILL.md`).
+- **Import**: Drag and drop or upload a `.md` file (with the skill's name and description in its header) or a `.zip` or `.skill` file (containing a `SKILL.md`).
 
-Choose the **Type** to control where the skill lives: **Project** saves it to `.agents/skills` in your project, while **User** saves it to `~/.ballerina/copilot/skills` and makes it available across all your projects.
+Choose the **Type** to control where the skill lives: **Project** saves it to `.agents/skills` in your project, while **User** saves it in your user folder and makes it available across all your projects.
 
 <ThemedImage
     alt="The Add skill dialog with the Create new and Import tabs."
@@ -63,23 +63,13 @@ Choose the **Type** to control where the skill lives: **Project** saves it to `.
 
 **Import** accepts one file at a time. To add several skills, select **Add skill** and import each `.md`, `.zip`, or `.skill` file separately.
 
-Once your skills are added, you can enable as many of them as you need. Copilot can load and combine multiple skills in the same request when each one matches the task.
+New skills are turned on as soon as you add them. If more than one skill fits your request, Copilot can use them one after another.
 
 ### Skill structure
 
-Each skill is a folder named after the skill that contains a `SKILL.md` file:
+A skill is a single `SKILL.md` file. If you import a `.zip` or `.skill` file, Copilot uses only the `SKILL.md` inside it, so keep all the instructions in that one file.
 
-```text
-~/.ballerina/copilot/skills/        # User skills
-└── your-skill-name/
-    └── SKILL.md
-
-<project>/.agents/skills/           # Project skills
-└── your-skill-name/
-    └── SKILL.md
-```
-
-`SKILL.md` starts with YAML front matter, followed by the instructions Copilot loads when the skill applies:
+`SKILL.md` starts with a short header between two `---` lines that holds the skill's name and description, followed by the instructions Copilot follows when the skill applies:
 
 ```markdown
 ---
@@ -98,8 +88,8 @@ description: Brief description of what this skill does and when to use it
 
 | Field | Required | Requirements |
 |---|---|---|
-| `name` | Yes | Must be unique across built-in, project, and user skills (case-insensitive). Cannot contain `/` or `\`. Use lowercase letters, numbers, and hyphens, since the name becomes the skill's folder name. |
-| `description` | Yes | Must be non-empty and written on a single line. Copilot uses it to decide when the skill applies, so state both what the skill does and when to use it. |
+| `name` | Yes | A short name for the skill, using lowercase letters, numbers, and hyphens. It must be different from the names of your other skills. |
+| `description` | Yes | A short description on a single line that says what the skill does and when Copilot should use it. |
 
 If a skill with the same name already exists, Copilot asks you to rename the skill before saving it.
 

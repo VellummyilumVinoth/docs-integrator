@@ -62,7 +62,7 @@ The panel provides the following options for finding a connector:
 | **All Categories** | Filter the list to a single category. |
 | **Popular** | The most commonly used connectors across all categories, shown by default. |
 
-Choosing a category from the **All Categories** dropdown narrows the list to the connectors in that category, with a count next to the category name. The available categories are **Network**, **Database**, **Messaging**, **AI & Machine Learning**, **CRM & Sales**, **Communication**, **Productivity & Collaboration**, **Storage & Files**, **Media & Content**, **Finance & Accounting**, **ERP & Business Operations**, **Human Resources**, **Marketing & Social Media**, **E-Commerce**, **Website & Apps**, **Cloud & DevOps**, **Security & Identity**, **Analytics**, **Support**, **IoT & Devices**, **Education**, **Lifestyle & News**, and **Other**, in addition to the default **Popular** list.
+Choosing a category from the **All Categories** dropdown filters the list to show only the connectors in that category.
 
 <ThemedImage
     alt="The Add Tool - Use Connection panel filtered to the Network category (9), listing HTTP, GraphQL, WebSocket, MCP Streamable HTTP, FTP, TCP, UDP, SOAP 1.1, and SOAP 1.2."
@@ -120,7 +120,7 @@ Selecting **Use Function** opens the **Add Tool - Use Function** panel, with a *
     }}
 />
 
-Expanding **Standard Library** lists Ballerina standard library functions grouped by module, such as `regex` (`matches`, `replace`, `replaceAll`, `search`, `searchAll`, `split`), `data.yaml` (`parseBytes`, `parseStream`, `parseString`, `toYamlString`), and `yaml` (`readFile`, `readString`, `writeFile`, `writeString`):
+Expanding **Standard Library** lists Ballerina standard library functions grouped by module.
 
 <ThemedImage
     alt="The Add Tool - Use Function panel with Standard Library expanded, showing modules regex, data.yaml, yaml, and auth, each listing their functions."

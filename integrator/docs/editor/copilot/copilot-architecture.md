@@ -54,6 +54,32 @@ The movement of data through Copilot is designed for zero retention at the inter
 - **No local storage**: WSO2 Intelligence does not store any user data locally.
 - **Real-time processing**: All data handling occurs in real time, without persistent storage at the WSO2 Intelligence layer.
 
+### Where your requests go
+
+- **WSO2 Cloud sign-in**: Requests go through WSO2 Intelligence, which runs in the US and in the EU. Copilot uses the region of your WSO2 Cloud account, so an account in the EU region is served from the EU. You don't need to set anything.
+- **Your own AI provider**: Requests go directly from your machine to the provider you signed in with, and do not pass through WSO2 Intelligence. The `/ask` command is the exception: it sends your question to WSO2 Intelligence to look up the Ballerina documentation.
+
+### What Copilot sends to the AI model
+
+To work on your integration, Copilot sends the following to the AI model:
+
+- Your prompts, and any files or images you attach.
+- The contents of the project files that Copilot reads while it works.
+- The results of the tools Copilot runs, such as diagnostics, test results, logs from services it runs, and the responses to requests it sends to your services.
+
+Copilot does not read your `Config.toml` file. When Copilot asks you for configuration values, it saves them to your project and does not send them to the AI model.
+
+Copilot writes its changes directly into your project files.
+
+### Web access and MCP servers
+
+- **Web access**: Web searches and page fetches are carried out by your AI provider, so your search terms and the content of the fetched pages pass through that provider.
+- **MCP servers**: Copilot connects to the MCP servers you add directly from your machine, and sends each server the inputs for the tools it calls. What the tools return is sent to the AI model. Each server handles the data it receives under its own terms.
+
+### Data stored on your machine
+
+Your chat sessions are saved on your machine. WSO2 does not store them.
+
 ## Bring your own key (BYOK)
 
 Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](copilot.md) for the available sign-in options.
@@ -98,6 +124,7 @@ To improve the Copilot experience, user feedback may be collected.
 **Collection scope**
 
 - Feedback is collected only when a user explicitly provides it.
+- Feedback includes your rating, any comment you add, and the current conversation, as the feedback dialog states.
 - No hidden or passive data collection is performed.
 
 **Transparency**
@@ -140,8 +167,9 @@ General Copilot best practices:
 
 | Data type | Retention period | Notes |
 |---|---|---|
-| Code prompts and responses | Not stored by WSO2 Intelligence | Forwarded directly to Anthropic or Amazon Bedrock. |
-| User feedback | One week | Retained only when explicitly provided by the user. |
+| Code prompts and responses | Not stored by WSO2 Intelligence | Forwarded to your AI provider: through WSO2 Intelligence with the WSO2 Cloud sign-in, or directly with your own provider. |
+| User feedback | One week | Retained only when explicitly provided by the user. Includes the current conversation. |
+| Chat sessions | Not stored by WSO2 | Saved on your machine. |
 | Authentication tokens | Session-based | Managed securely by Asgardeo. |
 | Organizational data | Not stored | Zero-retention policy at WSO2 Intelligence. |
 
