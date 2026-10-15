@@ -76,7 +76,7 @@ This example uses `customerSupportAgent`, a customer support agent that's alread
     }}
 />
 
-2. Select an existing agent from the list, or create a new one. You can reuse an agent you already expose through a Chat Agent Service. The steps for configuring the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) are the same for voice agents. See [Creating an Agent](../agents/create-an-agent.md) for instructions.
+2. Select an existing agent from the list, or create a new one. You can reuse an agent you already expose through a Chat Agent Service. The steps for configuring the system prompt, [tools](../agents/tools.md), and [memory](../agents/memory.md) are the same for voice agents. See [Creating an Agent](../agents/create-an-agent.md) for instructions. For end-to-end examples, see the [Build a Hotel Finder Agent](../../../../guides/how-to-guides/build-a-hotel-finder-agent.md) and [Build a Customer Care Agent with MCP](../../../../guides/business-use-cases/building-a-customer-care-agent-mcp.md) guides.
 
 <ThemedImage
     alt="Agents picker listing one existing agent, customerSupportAgent, under an Agent section with a plus button to create a new one."
@@ -153,6 +153,8 @@ The voice pipeline is available only on WSO2 Cloud. Deploying with Docker or on 
 
 - **[Voice Agents on WSO2 Cloud](https://wso2.com/integration-platform/docs/saas/manage/voice-agents)** — Configure the voice pipeline and test the agent with your voice.
 - **[Creating an Agent](../agents/create-an-agent.md)** — System prompt, tools, and memory shared by every agent type.
+- **[Build a Hotel Finder Agent](../../../../guides/how-to-guides/build-a-hotel-finder-agent.md)** — Build an agent with custom tools, step by step.
+- **[Build a Customer Care Agent with MCP](../../../../guides/business-use-cases/building-a-customer-care-agent-mcp.md)** — Build an agent that uses an MCP server as a tool.
 - **[Tools](../agents/tools.md)** — Add functions, connectors, and integrations to the agent.
 - **[Memory](../agents/memory.md)** — Configure conversational and persistent memory.
 - **[Observability](../agents/observability.md)** — Monitor traces, logs, and execution details.
