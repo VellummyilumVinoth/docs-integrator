@@ -41,7 +41,7 @@ You rarely call these directly. Knowledge Base `ingest` and `retrieve` operation
     }}
 />
 
-## Implementations overview
+## Supported embedding providers
 
 | Provider | Module | API key required? | Default model |
 |---|---|---|---|
