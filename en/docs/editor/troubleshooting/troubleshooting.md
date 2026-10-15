@@ -24,8 +24,8 @@ If the editor shows **WSO2 Integrator cannot start** or **Your project dependenc
     <ThemedImage
         alt="Open Settings from the command menu"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command-v5.1.png'),
         }}
     />
 
@@ -34,8 +34,8 @@ If the editor shows **WSO2 Integrator cannot start** or **Your project dependenc
     <ThemedImage
         alt="Settings page"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page-v5.1.png'),
         }}
     />
 
@@ -53,8 +53,8 @@ If the editor shows **WSO2 Integrator cannot start** or **Your project dependenc
     <ThemedImage
         alt="Select the Ballerina output channel"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel-v5.1.png'),
         }}
     />
 
