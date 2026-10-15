@@ -28,7 +28,7 @@ Both expose the same [`ai:Agent`](../agents/agents.md#components-of-an-ai-agent)
 ## Create a Voice Agent Service
 
 1. Open your integration project in WSO2 Integrator.
-2. On the **Design** tab, select **Add Artifact manually** below the WSO2 Integrator Copilot's quick-start cards. Once the project already has an artifact, use **+ Add Artifact** in the top-right corner instead — it opens the same Artifacts page.
+2. Open the **Artifacts** page: on the **Design** tab, select **Add Artifact manually** below the WSO2 Integrator Copilot's quick-start cards, or select **+ Add Artifact** in the top-right corner if your project already has artifacts.
 
 <ThemedImage
     alt="Artifacts page in WSO2 Integrator showing artifact categories Automation, Durable Workflow, AI Integration with Chat Agent Service, Durable Agentic Workflow, Voice Agent Service, and MCP Service, Integration as API with HTTP Service, GraphQL Service Beta, and TCP Service Beta, and Event Integration."
