@@ -158,10 +158,10 @@ Official website: [OpenAI embeddings documentation](https://platform.openai.com/
 
 ### Create form
 
-The form opens with **API Key**, **Embedding Model Type**, and **Service URL**, followed by HTTP Version, Timeout, and the start of Forwarded. The **Embedding Model Type** dropdown lists the supported models:
+The form opens with **API Key**, **Embedding Model Type**, and **Service URL**, followed by **HTTP Version**, **Timeout**, and the start of **Forwarded**:
 
 <ThemedImage
-    alt="Create Embedding Provider form for OpenAI. Header reads 'Initializes the OpenAI embedding model with the given connection configuration.' Fields shown: API Key, Embedding Model Type with its dropdown open listing TEXT_EMBEDDING_3_SMALL, TEXT_EMBEDDING_3_LARGE, TEXT_EMBEDDING_ADA_002, and No Selection, then Service URL, HTTP Version (default HTTP_2_0), Timeout (default 60), and the start of Forwarded (default disable)."
+    alt="Create Embedding Provider form for OpenAI. Header reads 'Initializes the OpenAI embedding model with the given connection configuration.' Fields shown: API Key, Embedding Model Type (No Selection), Service URL (default https://api.openai.com/v1), HTTP Version (default HTTP_2_0), Timeout (default 60), and the start of Forwarded (default disable)."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/09-openai-basic-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/09-openai-basic-v5.1.png'),
@@ -170,19 +170,31 @@ The form opens with **API Key**, **Embedding Model Type**, and **Service URL**, 
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **API Key** | Yes | N/A | OpenAI API key. Get one from the [OpenAI API keys](https://platform.openai.com/api-keys) page. |
-| **Embedding Model Type** | Yes | N/A | `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002` (shown as `TEXT_EMBEDDING_3_SMALL`, `TEXT_EMBEDDING_3_LARGE`, `TEXT_EMBEDDING_ADA_002`). OpenAI embedding model. |
-| **Service URL** | No | `https://api.openai.com/v1` | OpenAI API base URL. Override it to use an OpenAI-compatible gateway. |
+| **API Key** | Yes | N/A | The OpenAI API key. Get one from the [OpenAI API keys](https://platform.openai.com/api-keys) page. |
+| **Embedding Model Type** | Yes | N/A | `TEXT_EMBEDDING_3_SMALL` (`text-embedding-3-small`), `TEXT_EMBEDDING_3_LARGE` (`text-embedding-3-large`), `TEXT_EMBEDDING_ADA_002` (`text-embedding-ada-002`). The OpenAI embedding model name. |
+| **Service URL** | No | `https://api.openai.com/v1` | The base URL of the OpenAI API endpoint. |
 
-Scrolling further shows Forwarded, Compression, and Payload Validation, then the collapsed **Advanced Configurations** toggle, and finally **Embedding Provider Name** and **Result Type**:
+Scrolling further shows **Forwarded**, **Compression**, and **Payload Validation**, then the collapsed **Advanced Configurations** toggle, and finally **Embedding Provider Name** and **Result Type**:
 
 <ThemedImage
-    alt="Bottom of the OpenAI Create Embedding Provider form showing the end of Timeout, then Forwarded, Compression (default AUTO), Payload Validation (default true), the collapsed Advanced Configurations toggle, Embedding Provider Name set to openaiEmbeddingprovider, Result Type locked to openai:EmbeddingProvider, and the Save button."
+    alt="Bottom of the OpenAI Create Embedding Provider form showing the end of Timeout, then Forwarded (default disable), Compression (default AUTO), Payload Validation (default true), the collapsed Advanced Configurations toggle, Embedding Provider Name set to openaiEmbeddingprovider, Result Type locked to openai:EmbeddingProvider, and the Save button."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/10-openai-inline-bottom-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/10-openai-inline-bottom-v5.1.png'),
     }}
 />
+
+The connection fields on the form are optional and have these defaults:
+
+| Field | Default | Available values |
+|---|---|---|
+| **HTTP Version** | `HTTP_2_0` | The HTTP version understood by the client. |
+| **Timeout** | `60` | The maximum time to wait (in seconds) for a response before closing the connection. |
+| **Forwarded** | `"disable"` | The choice of setting the `forwarded`/`x-forwarded` header. |
+| **Compression** | `AUTO` | `AUTO`, `ALWAYS`, `NEVER`. Specifies the way of handling the compression (`accept-encoding`) header. |
+| **Payload Validation** | `true` | `true`, `false`. Enables inbound payload validation provided by the constraint package. |
+| **Embedding Provider Name** | `openaiEmbeddingprovider` | Name of the embedding-provider connection. |
+| **Result Type** | `openai:EmbeddingProvider` | Locked. |
 
 ### Advanced configurations
 
