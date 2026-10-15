@@ -53,7 +53,7 @@ Scroll to see the remaining options:
     }}
 />
 
-## Implementations overview
+## Supported model providers
 
 | Provider | Module | API key required? | Has embedding provider? |
 |---|---|---|---|
