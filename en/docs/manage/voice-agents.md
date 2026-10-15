@@ -146,7 +146,7 @@ A four-step wizard opens. The current AI agent is preselected as the target, so 
             }}
         />
 
-    - **Externally-Hosted Agent**: any agent you host yourself, outside WSO2 Cloud, that's reachable over WebSocket. Enter its **WebSocket URL**, which must start with `wss://` (or `ws://` for local setups), for example a public tunnel URL such as `wss://<your-host>/voice-agent`. The voice agent uses this URL as `TARGET_AGENT_WS_URL`.
+    - **Externally-Hosted Agent**: any agent you host yourself, outside WSO2 Cloud, that's reachable over WebSocket. Enter its **WebSocket URL**, which must start with `wss://` (or `ws://` for local setups), for example a public tunnel URL such as `wss://<your-host>/voice-agent`. The voice agent uses this URL as its **Target Agent WebSocket URL** configuration.
 
         <ThemedImage
             alt="Externally-Hosted Agent with the WebSocket URL field"
@@ -162,7 +162,7 @@ A four-step wizard opens. The current AI agent is preselected as the target, so 
     - Accept each caller message as a plain-text WebSocket message containing only the caller's latest utterance, and reply with a plain-text WebSocket message.
     - Signal failures by closing the WebSocket connection with an error close code and reason, instead of sending the error back as a regular message.
 
-3. Check the **Display Name** and **Name**. For a platform-hosted agent, they default to `<agent name> - Voice Agent`. Optionally, add a **Description**.
+3. Check the **Display Name** and **Name**. For a platform-hosted agent, they default to `<agent-name> - Voice Agent`. Optionally, add a **Description**.
 4. Click **Next**.
 
 ### Configure LiveKit
@@ -187,7 +187,7 @@ To find these values, see [LiveKit credentials](https://docs.livekit.io/deploy/a
 
 1. Select a speech-to-text (STT) provider: **Deepgram**, **AssemblyAI**, **Cartesia**, **ElevenLabs**, or **OpenAI**.
 2. Select the **Model** and **Language**.
-3. Enter the provider's API key. For OpenAI, create one on the [OpenAI API keys](https://platform.openai.com/api-keys) page. The wizard links to each provider's key page from **How to get your `<provider>` API key?**
+3. Enter the provider's API key. For OpenAI, create one on the [OpenAI API keys](https://platform.openai.com/api-keys) page. The wizard links to each provider's key page from **How to get your provider API key?**
 4. Click **Next**.
 
 <ThemedImage
@@ -248,7 +248,7 @@ Click **Deploy Voice Agent**.
     }}
 />
 
-WSO2 Cloud creates a new integration (type **Voice Agent**) in the project, named **`<agent name> - Voice Agent`** by default, and deploys it to the Development environment. The voice agent connects to the target agent's WebSocket URL through the `TARGET_AGENT_WS_URL` configuration. For a platform-hosted agent, the AI agent's overview page now shows **Voice Agent Enabled**, which links to the new voice agent.
+WSO2 Cloud creates a new integration (type **Voice Agent**) in the project, named **`<agent-name> - Voice Agent`** by default, and deploys it to the Development environment. The voice agent connects to the target agent through its **Target Agent WebSocket URL** configuration. For a platform-hosted agent, the AI agent's overview page now shows **Voice Agent Enabled**, which links to the new voice agent.
 
 <ThemedImage
     alt="WSO2 Cloud creating the voice agent integration"
@@ -315,7 +315,7 @@ For the customer support example, try:
     }}
 />
 
-## Promote to production (optional)
+## Promote to production
 
 When you're ready to use the voice agent in production, click **Promote** on the voice agent's overview page. Choose **Use Development configuration** or **Define new configuration values**, click **Next**, and wait until the **Production** card shows **Active**.
 
@@ -338,7 +338,7 @@ The transcript is published as soon as the AI agent returns its full reply, but 
 
 ### The agent doesn't respond
 
-- Open the voice agent's **Development** card, click **Configure**, and check that `TARGET_AGENT_WS_URL` points to the target agent's running WebSocket URL. For an externally hosted agent, this is the **WebSocket URL** you entered, so check that it's reachable from WSO2 Cloud. When the voice agent is created, it prefers the AI agent's Production URL. If the AI agent isn't running in Production, set the Development URL manually and redeploy.
+- Open the voice agent's **Development** card, click **Configure**, and check that **Target Agent WebSocket URL** (under **Target Agent**) points to the target agent's running WebSocket URL. For an externally hosted agent, this is the **WebSocket URL** you entered, so check that it's reachable from WSO2 Cloud. When the voice agent is created, it prefers the AI agent's Production URL. If the AI agent isn't running in Production, set the Development URL manually and redeploy.
 - Check the AI agent's own logs for errors, such as a missing LLM model or API key configuration.
 
 ### The session ends on its own
