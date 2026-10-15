@@ -63,7 +63,7 @@ Explore each part of the editor below.
   <h3 class="palette-card-title">AI Assistance</h3>
   <p class="palette-card-desc">WSO2 Integrator Copilot is the AI assistant built into the editor, for generating, testing, and fixing integrations.</p>
 
-    <PaletteChip href="/editor/copilot/getting-started">WSO2 Integrator Copilot
+    <PaletteChip href="/editor/copilot">WSO2 Integrator Copilot
     <PaletteChip href="/editor/copilot/copilot-capabilities">Built-in Capabilities
     <PaletteChip href="/editor/copilot/customize-copilot">Customize Copilot
 

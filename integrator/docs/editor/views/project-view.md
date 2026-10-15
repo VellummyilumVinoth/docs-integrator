@@ -9,8 +9,8 @@ The Project view is the top-level view in WSO2 Integrator. It appears when you o
 <ThemedImage
     alt="Project view overview"
     sources={{
-        light: useBaseUrl('/img/editor/views/project-view/overview.png'),
-        dark: useBaseUrl('/img/editor/views/project-view/overview.png'),
+        light: useBaseUrl('/img/editor/views/project-view/overview-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/project-view/overview-v5.1.png'),
     }}
 />
 
@@ -21,8 +21,8 @@ The project overview canvas is the central area of the Project view. It displays
 <ThemedImage
     alt="Project overview canvas"
     sources={{
-        light: useBaseUrl('/img/editor/views/project-view/project-overview-canvas.png'),
-        dark: useBaseUrl('/img/editor/views/project-view/project-overview-canvas.png'),
+        light: useBaseUrl('/img/editor/views/project-view/project-overview-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/project-view/project-overview-canvas-v5.1.png'),
     }}
 />
 
@@ -30,14 +30,10 @@ The project overview canvas is the central area of the Project view. It displays
 
 The **Integrations & Libraries** section displays a card grid showing each integration and library in the project. Each card shows:
 
-- The name (for example, `Integration1`, `Library1`).
-- A type badge on libraries (for example, `Library`) to distinguish them from integrations.
+- The name (for example, `commons` or `FileTracker`).
+- A type badge indicating the entry category. It displays `Library` for libraries or the integration style, such as `API Integration` or `File Integration`, for integrations.
 
 Click any card to navigate to the [Integration view](integration-view.md) or [Library view](library-view.md), where you can build and manage its artifacts.
-
-### Generate with AI
-
-Click the **Generate with AI** button at the top of the canvas to open the [WSO2 Integrator Copilot](../copilot/copilot.md). Describe what you want in natural language, and WSO2 Integrator Copilot generates the integration with the appropriate entry points, connections, and logic.
 
 ### Add integration or library
 
@@ -50,16 +46,16 @@ The deployment options panel appears on the right sidebar and provides shortcuts
 <ThemedImage
     alt="Deployment options"
     sources={{
-        light: useBaseUrl('/img/editor/views/project-view/deployment-options.png'),
-        dark: useBaseUrl('/img/editor/views/project-view/deployment-options.png'),
+        light: useBaseUrl('/img/editor/views/project-view/deployment-options-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/project-view/deployment-options-v5.1.png'),
     }}
 />
 
 | Option | Target |
 |---|---|
 | [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) | Fully managed cloud platform for hosting and running integrations. |
-| [**Containerized Deployment**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
-| [**VM Deployment**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
+| [**Deploy with Docker**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
+| [**Deploy on a VM**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
 | [**Integration Control Plane (ICP)**](../../icp/index.md) | Monitor and manage running integrations from a centralized dashboard. |
 
 At the project level, click **Enable ICP for all integrations** to activate ICP monitoring for every integration in the project at once.
@@ -71,8 +67,8 @@ The README section at the bottom of the Project view displays the contents of yo
 <ThemedImage
     alt="README"
     sources={{
-        light: useBaseUrl('/img/editor/views/project-view/readme.png'),
-        dark: useBaseUrl('/img/editor/views/project-view/readme.png'),
+        light: useBaseUrl('/img/editor/views/project-view/readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/project-view/readme-v5.1.png'),
     }}
 />
 

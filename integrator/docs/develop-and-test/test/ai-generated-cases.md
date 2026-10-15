@@ -4,7 +4,7 @@ title: Generate Tests with AI
 
 # Generate Tests with AI
 
-Writing test cases with [WSO2 Integrator Copilot](../../editor/copilot/capabilities.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
+Writing test cases with [WSO2 Integrator Copilot](../../editor/copilot/copilot.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
 
 ## Generate tests with WSO2 Integrator Copilot
 
@@ -16,7 +16,15 @@ Example prompts to get started:
 - "Generate a data-driven test for the `calculateDiscount` function with at least five input combinations."
 - "Add mock stubs for the payment gateway client and write a test for a failed charge."
 
-Copilot places the generated code in the `tests/` folder of your module. Review each function before running it. Generated tests are a starting point, not a finished product.
+Copilot adds the generated tests to the `tests/` folder of your module, runs them with `bal test`, and resolves any failures before it completes your request. Review the tests to confirm that they check the behavior you expect.
+
+<ThemedImage
+    alt="Copilot running the generated tests with bal test and showing all tests passing."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/running-tests.png'),
+        dark: useBaseUrl('/img/editor/copilot/running-tests.png'),
+    }}
+/>
 
 ## Best practices
 

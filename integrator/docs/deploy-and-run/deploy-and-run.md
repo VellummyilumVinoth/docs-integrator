@@ -68,6 +68,7 @@ Choose where your integrations run. Where you deploy also decides how you [manag
     <PaletteChip href="/deploy-and-run/secure/api-security-rate-limiting">API security
     <PaletteChip href="/deploy-and-run/secure/secrets-encryption">Secrets and encryption
     <PaletteChip href="/deploy-and-run/secure/compliance-considerations">Compliance
+    <PaletteChip href="/deploy-and-run/secure/aws-access">AWS access
 
 
 <PaletteCard icon="manage-observe" href="/observe">

@@ -4,7 +4,7 @@ title: ICP Observability Setup
 
 # ICP Observability Setup
 
-When your integrations run on your own infrastructure, the [Integration Control Plane](../icp/index.md) (ICP) can show their logs and metrics in one console, alongside health and runtime status. ICP reads this data from OpenSearch, which is populated by Fluent Bit tailing the runtime's log files.
+When your integrations run on your own infrastructure, the [Integration Control Plane](../icp/index.md) (ICP) can show their logs and metrics in one console, alongside health and runtime status. ICP reads this data from one of two observability providers: Moesif or OpenSearch. With OpenSearch, the data is populated by Fluent Bit tailing the runtime's log files.
 
 ```mermaid
 flowchart LR
@@ -15,7 +15,7 @@ flowchart LR
     Console["ICP console"] --> ICP
 ```
 
-Setting this up involves four steps:
+Setting up OpenSearch involves four steps:
 
 1. Deploy OpenSearch.
 2. Create the index templates for logs and metrics.

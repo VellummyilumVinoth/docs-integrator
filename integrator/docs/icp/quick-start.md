@@ -23,7 +23,7 @@ For local development, start ICP from WSO2 Integrator. The ICP console opens in 
 />
 
 :::caution Security Recommendation
-Change the default `admin` password before using ICP in production. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**.
+Change the default `admin` password before using ICP in production. Click the user avatar at the top right, select **Profile**, and use **Change Password**.
 
 ## 1. Create a project
 
@@ -53,7 +53,7 @@ Projects group related integrations. Every integration belongs to exactly one pr
 
 ICP redirects to the new project's home page.
 
-ICP also auto-creates an `<Project Name> Admins` group with the *Project Admin* role. You can use this group to manage access to the project. See [Access control](access-control.md).
+ICP also auto-creates a `<project-name-slug> Admins` group (for example, `my-project Admins`) with the *Project Admin* role. You can use this group to manage access to the project. See [Access control](access-control.md).
 
 For full project management options, see [Manage projects](manage-projects.md).
 
@@ -82,7 +82,7 @@ For full project management options, see [Manage projects](manage-projects.md).
      </tbody>
    </table>
 
-4. Under **Integration Type**, select what you want to build:
+4. Optionally, under **Integration Type**, select what you want to build. **Workflow** is available only for **WSO2 Integrator**.
 
    <table style={{width: '100%', display: 'table'}}>
      <colgroup><col style={{width: '30%'}} /><col style={{width: '70%'}} /></colgroup>
@@ -108,7 +108,7 @@ For full project management options, see [Manage projects](manage-projects.md).
 
 5. Click **Create**.
 
-The integration now appears under **Integrations** on the project home page. It has no runtime yet. You will connect one in the next step.
+ICP opens the new integration's overview page. The integration is also listed under **Integrations** on the project home page. It has no runtime yet. You will connect one in the next step.
 
 For full integration management options, see [Manage integrations](manage-integrations.md).
 

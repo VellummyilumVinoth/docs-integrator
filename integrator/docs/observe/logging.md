@@ -158,6 +158,19 @@ JSON output:
 }
 ```
 
+## Send logs to Amazon CloudWatch Logs
+
+Integrations log to stdout, so on AWS the platform ships the output to CloudWatch Logs without code changes. Switch to the [JSON log format](#json-log-format) so each log line arrives as one structured event that you can query with CloudWatch Logs Insights:
+
+- In `Config.toml`, set `format = "json"` under `[ballerina.log]`.
+- In a container, where `Config.toml` isn't part of the image, set the environment variable `BAL_CONFIG_VAR_BALLERINA_LOG_FORMAT=json` instead. On Amazon ECS, add it to the `environment` list of the container definition.
+
+| Platform | How logs reach CloudWatch Logs |
+|----------|--------------------------------|
+| Amazon ECS | The `awslogs` log driver in the task definition. See [Amazon ECS deployment](../deploy-and-run/self-hosted/containerized-deployment.md#step-5-register-the-task-definition). |
+| Amazon EKS | Fluent Bit, or the Amazon CloudWatch Observability EKS add-on |
+| AWS Lambda | Automatic; function output goes to the `/aws/lambda/<function-name>` log group |
+
 ## What's next
 
 - [Metrics](metrics.md) — Monitor service health with Prometheus

@@ -50,7 +50,7 @@ The sidebar changes its items based on the active scope level.
 
 | Item | Description |
 |------|-------------|
-| **Projects** | View and manage all projects in the organization |
+| **Overview** | View and manage all projects in the organization |
 | **Runtimes** | View all runtimes across every project |
 | **Environments** | Create and manage deployment environments |
 | **Access control** | Manage users, roles, and groups |
@@ -61,9 +61,11 @@ The sidebar changes its items based on the active scope level.
 |------|-------------|
 | **Overview** | Integrations list and integration type breakdown |
 | **Runtimes** | Runtimes across all integrations in the project |
+| **Workflows** | Durable workflows and their executions. See [Manage workflows](manage-workflows/manage-workflows.md). |
+| **Human Tasks** | Human tasks that workflows are waiting on. See [Complete human tasks](manage-workflows/complete-human-tasks.md). |
 | **Logs** | Aggregated logs for all runtimes in the project |
 | **Metrics** | Project-level performance metrics |
-| **Environments** | Read-only view of environments for this project |
+| **Environments** | Organization-level environments, which users with permission can also manage from here |
 | **Access control** | Role assignments scoped to this project |
 
 **Integration sidebar**
@@ -71,7 +73,10 @@ The sidebar changes its items based on the active scope level.
 | Item | Description |
 |------|-------------|
 | **Overview** | Integration details and runtime status by environment |
+| **Test** | Send test requests to the integration's services. Not shown for workflow integrations. |
 | **Runtimes** | Runtimes connected to this integration |
+| **Workflows** | Workflows and executions for this integration. Shown only for workflow integrations. |
+| **Human Tasks** | Human tasks for this integration's workflows. Shown only for workflow integrations. |
 | **Logs** | Centralized logs from connected runtimes |
 | **Loggers** | Configure log levels per runtime |
 | **Metrics** | Runtime metrics and performance data |

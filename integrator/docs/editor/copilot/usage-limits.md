@@ -72,5 +72,5 @@ If you need assistance while your request is being reviewed, the team is happy t
 
 ## See also
 
-- [Getting started](copilot.md) — Sign in to WSO2 Integrator Copilot, including with your own AI provider credentials.
+- [WSO2 Integrator Copilot](copilot.md) — Sign in to WSO2 Integrator Copilot, including with your own AI provider credentials.
 - [Copilot Architecture and Data Handling](copilot-architecture.md) — How Copilot handles your data, and the bring your own key options.

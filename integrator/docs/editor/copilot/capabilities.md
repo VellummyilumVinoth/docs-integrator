@@ -50,9 +50,13 @@ Copilot can generate a custom connector when a pre-built one is not available. D
     }}
 />
 
+## Running in the background
+
+Copilot runs in the background, so closing the panel does not stop a run. While it works, a status bar item, a floating status orb, and a mini chat keep you informed and let you follow along or reply without opening the full panel. See [Copilot in the Background](background-copilot.md).
+
 ## Review generated artifacts
 
-After generation completes, you can inspect exactly what was built or changed before finalizing the changes. Review the generated artifacts as the flow diagram or as source code with a diff view.
+After generation completes, you can inspect exactly what was built or changed before finalizing the changes. Copilot shows the change set in a unified diff diagram that marks added, removed, and modified parts, and you can step through the resulting and previous versions of each artifact. See [Reviewing Changes](reviewing-changes.md).
 
 <ThemedImage
     alt="Review mode showing the generated integration diagram."
@@ -155,8 +159,10 @@ To undo what Copilot changed, select **Restore Checkpoint**. It rolls your integ
 
 ## See also
 
-- [Getting started](copilot.md) — Sign in to WSO2 Integrator Copilot.
+- [WSO2 Integrator Copilot](copilot.md) — Sign in to WSO2 Integrator Copilot.
 - [Copilot Chat Interface](chat-interface.md) — Chat controls, slash commands, and modes.
+- [Copilot in the Background](background-copilot.md) — Follow a run while the panel is closed.
+- [Reviewing Changes](reviewing-changes.md) — Inspect a run's changes in a unified diff.
 - [Customize Copilot](customize-copilot.md) — Give Copilot project instructions, reusable skills, and your own tools through MCP servers.
 - [Generate tests with AI](../../develop-and-test/test/ai-generated-cases.md) — Use Copilot to generate test cases.
 - [AI data mapper](../../develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/ai-mapping.md) — Generate data mappings using AI.

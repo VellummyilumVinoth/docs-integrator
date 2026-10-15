@@ -9,20 +9,20 @@ The Library view is a dedicated view in WSO2 Integrator for creating utilities a
 <ThemedImage
     alt="Library view overview"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/overview.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/overview.png'),
+        light: useBaseUrl('/img/editor/views/library-view/overview-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/overview-v5.1.png'),
     }}
 />
 
 ## Library overview canvas
 
-The library overview canvas is the central area of the Library view. It provides a dashboard for the library, showing the library name as a heading and an **Artifacts summary** with cards for the total number of defined types, functions, data mappers, and connections.
+The library overview canvas is the central area of the Library view. It provides a dashboard for the library, showing the library name as a heading and an **Artifacts summary** with a card for each artifact category that has artifacts, such as **Types** and **Functions**. Each card shows the number of artifacts defined in that category.
 
 <ThemedImage
     alt="Library overview canvas"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/library-overview-canvas.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/library-overview-canvas.png'),
+        light: useBaseUrl('/img/editor/views/library-view/library-overview-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/library-overview-canvas-v5.1.png'),
     }}
 />
 
@@ -34,13 +34,15 @@ Click the **+ Add Artifacts** button at the top right of the canvas to add a new
 - **Data Mapper**
 - **Type**
 - **Connection**
+- **Agent**
+- **Agent Definition**
 - **Configuration**
 
 <ThemedImage
     alt="Add artifacts menu"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/add-artifacts.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/add-artifacts.png'),
+        light: useBaseUrl('/img/editor/views/library-view/add-artifacts-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/add-artifacts-v5.1.png'),
     }}
 />
 
@@ -53,8 +55,8 @@ Clicking any of the artifact category cards on the main canvas (such as **Functi
 <ThemedImage
     alt="Artifact list view"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/artifact-list.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/artifact-list.png'),
+        light: useBaseUrl('/img/editor/views/library-view/artifact-list-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/artifact-list-v5.1.png'),
     }}
 />
 
@@ -71,8 +73,8 @@ The toolbar sits at the top of the Library view and provides quick access to act
 <ThemedImage
     alt="Toolbar"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/toolbar.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/toolbar.png'),
+        light: useBaseUrl('/img/editor/views/library-view/toolbar-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/toolbar-v5.1.png'),
     }}
 />
 
@@ -89,8 +91,8 @@ The README section at the bottom of the Library view displays the contents of yo
 <ThemedImage
     alt="README"
     sources={{
-        light: useBaseUrl('/img/editor/views/library-view/readme.png'),
-        dark: useBaseUrl('/img/editor/views/library-view/readme.png'),
+        light: useBaseUrl('/img/editor/views/library-view/readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/library-view/readme-v5.1.png'),
     }}
 />
 

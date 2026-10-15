@@ -30,7 +30,7 @@ Moving from another platform? See [Migrate](../migrate/index.md).
 
 ## Build Integration
 
-<PaletteCard icon="ai" href="/editor/copilot/getting-started">
+<PaletteCard icon="ai" href="/editor/copilot">
   <h3 class="palette-card-title">Build with Copilot</h3>
   <ul class="palette-card-list">
     <li>Prompt Copilot to generate a first working version</li>

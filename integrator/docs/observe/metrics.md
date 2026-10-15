@@ -228,6 +228,12 @@ service /orders on new http:Listener(9090) {
 }
 ```
 
+## Send metrics to Amazon Managed Service for Prometheus
+
+On AWS, have an [AWS Distro for OpenTelemetry](https://aws-otel.github.io/) collector or the CloudWatch agent scrape the integration's metrics endpoint (port `9797`), and remote-write the metrics to Amazon Managed Service for Prometheus or publish them to CloudWatch. Use the same scrape settings as in [Setting up Prometheus](#setting-up-prometheus).
+
+The endpoint exists only when Prometheus metrics are enabled in `Config.toml`, as shown in [Configure integration for Prometheus](#configure-integration-for-prometheus). In a container, where `Config.toml` isn't part of the image, set the same values as environment variables: `BAL_CONFIG_VAR_BALLERINA_OBSERVE_METRICSENABLED=true`, `BAL_CONFIG_VAR_BALLERINA_OBSERVE_METRICSREPORTER=prometheus`, and, to change the defaults, `BAL_CONFIG_VAR_BALLERINAX_PROMETHEUS_HOST` and `BAL_CONFIG_VAR_BALLERINAX_PROMETHEUS_PORT`.
+
 ## What's next
 
 - [Prometheus and Grafana](open-source/prometheus-grafana.md) — Scrape configuration, Kubernetes, and Grafana dashboards

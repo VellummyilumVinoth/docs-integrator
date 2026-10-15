@@ -82,7 +82,7 @@ Your chat sessions are saved on your machine. WSO2 does not store them.
 
 ## Bring your own key (BYOK)
 
-Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](copilot.md) for the available sign-in options.
+Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [WSO2 Integrator Copilot](copilot.md) for the available sign-in options.
 
 ### Anthropic deployment
 
@@ -175,5 +175,5 @@ General Copilot best practices:
 
 ## See also
 
-- [Copilot capabilities](capabilities.md) — What Copilot can do.
-- [Getting started](copilot.md) — Sign in to Copilot.
+- [Built-in Capabilities](capabilities.md) — What Copilot can do.
+- [WSO2 Integrator Copilot](copilot.md) — Sign in to Copilot.
