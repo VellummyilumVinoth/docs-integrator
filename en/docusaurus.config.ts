@@ -195,7 +195,7 @@ const config: Config = {
           title: 'Editor Tour',
           items: [
             { label: 'Flow Canvas', to: '/editor/canvases/flow-canvas' },
-            { label: 'Copilot', to: '/editor/copilot/getting-started' },
+            { label: 'Copilot', to: '/editor/copilot' },
             { label: 'Project View', to: '/editor/views/project-view' },
           ],
         },

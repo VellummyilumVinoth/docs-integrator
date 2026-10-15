@@ -143,8 +143,8 @@ Save this as `main.bal`, then click the **Run** button in the top toolbar. Once 
 
 Deploy your integration to WSO2 Cloud - Integration Platform in any of the following ways:
 
-- If you're using the cloud editor, see [Save and deploy](/deploy/cloud/deploy-from-cloud-editor/#save-and-deploy).
-- If you're using the WSO2 Integrator IDE, see [Deploy from the IDE](/deploy/cloud/push-from-ide).
+- If you're using the cloud editor, see [Save and deploy](../deploy/cloud/deploy-from-cloud-editor.md#save-and-deploy).
+- If you're using the WSO2 Integrator IDE, see [Deploy from the IDE](../deploy/cloud/push-from-ide.md).
 - If you'd rather skip the build and try a ready-made sample, one-click deploy it:
 
     <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/orderprocessor" target="_blank">

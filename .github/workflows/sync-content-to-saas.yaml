@@ -36,6 +36,25 @@ name: Sync shared content to saas
 # server, which is self-hosted only, so it is listed in SYNC_EXCLUDE_FILES and
 # removed after the replace (and so never drives image syncing either).
 #
+# Carved out of develop-and-test/integration-artifacts/: workflow/ (durable
+# workflows and durable agentic workflows) is managed through ICP, which is
+# self-hosted only, and durable workflow isn't available on WSO2 Cloud yet.
+# It is listed in SYNC_EXCLUDE_DIRS and removed after
+# the replace. Like the ICP page above, it never drives image syncing either,
+# and its images on saas are cleaned up as stale if nothing else uses them.
+# The shared-content-guard on saas excludes the same path.
+#
+# The pages that talk about durable workflows are handled the same way:
+# ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md is
+# excluded outright (SYNC_EXCLUDE_FILES), and ai-integrations/agents/
+# gated-tools.md and supportive-artifacts/agent.md are saas-owned
+# (SAAS_OWNED_FILES) -- saas's copy links to the integrator site instead of
+# the workflow/ pages it doesn't have. The sync restores saas's copy of
+# those two files after the full replace and never copies integrator's.
+# When durable workflow ships on saas, remove all of these carve-outs
+# (the workflow/ directory, the comparison page, the two saas-owned files,
+# the matching trigger-path negations, and the guard's exemptions on saas).
+#
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
@@ -50,6 +69,10 @@ on:
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
       - '!en/docs/develop-and-test/create-workspace/**'
+      - '!en/docs/develop-and-test/integration-artifacts/workflow/**'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md'
+      - '!en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md'
       - '!en/docs/editor/integration-control-plane.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
@@ -74,8 +97,18 @@ env:
   SAAS_OWNED_DIRS: >-
     en/docs/develop-and-test/create-workspace
   # Self-hosted-only pages inside synced folders, never copied to saas.
+  # Pages edited on saas to link to the integrator site instead of the
+  # workflow/ pages (which saas doesn't have), so never overwritten by a sync.
+  SAAS_OWNED_FILES: >-
+    en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md
+    en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md
   SYNC_EXCLUDE_FILES: >-
     en/docs/editor/integration-control-plane.md
+    en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md
+  # Self-hosted-only (ICP-managed) folders inside synced folders, never
+  # copied to saas. Removed from saas too if a previous sync put them there.
+  SYNC_EXCLUDE_DIRS: >-
+    en/docs/develop-and-test/integration-artifacts/workflow
 
 jobs:
   sync:
@@ -126,6 +159,9 @@ jobs:
           for f in $SYNC_EXCLUDE_FILES; do
             rm -f "$f"
           done
+          for d in $SYNC_EXCLUDE_DIRS; do
+            rm -rf "$d"
+          done
 
           # Put saas's copy of the saas-owned directories back, before any
           # image refs are collected. Only if it exists on saas, so a missing
@@ -134,6 +170,14 @@ jobs:
             if git cat-file -e "origin/saas:$d" 2>/dev/null; then
               rm -rf "$d"
               git checkout origin/saas -- "$d"
+            fi
+          done
+
+          # Same for the saas-owned files: put saas's copy back over the one the
+          # replace just brought in. Only if it exists on saas.
+          for f in $SAAS_OWNED_FILES; do
+            if git cat-file -e "origin/saas:$f" 2>/dev/null; then
+              git checkout origin/saas -- "$f"
             fi
           done
 

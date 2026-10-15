@@ -111,15 +111,15 @@ The `@grpc:Descriptor` annotation and the descriptor constant (`ORDER_SERVICE_DE
 
 Once a gRPC service exists in the project, it appears in the **Entry Points** sidebar and on the design canvas.
 
-![Design canvas showing OrderService as a grpc:Service node](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-designer.png)
+![Design canvas showing OrderService as a grpc:Service node](/img/develop/integration-artifacts/service/grpc-service/step-designer.png)
 
 Click the service node on the canvas (or the service name in the sidebar) to open the **gRPC Service** designer, which lists all remote functions as event handlers.
 
-![GRPC Service designer showing event handlers](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png)
+![GRPC Service designer showing event handlers](/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png)
 
 Click any handler row (for example, `getOrder`) to open its **flow designer view**, where you can define the integration logic visually.
 
-![Flow designer for the getOrder remote function](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-flow.png)
+![Flow designer for the getOrder remote function](/img/develop/integration-artifacts/service/grpc-service/step-flow.png)
 
 :::note
 Not all gRPC service configuration options are available through the visual designer. For full control including listener configuration and descriptor settings, use Ballerina code directly.

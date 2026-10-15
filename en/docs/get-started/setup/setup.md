@@ -56,10 +56,10 @@ After installation, launch the WSO2 Integrator:
 - **Linux**: Launch **WSO2 Integrator** from your applications menu (after a `.deb` or `.rpm` install), or run the binary from the extracted directory if you used the `.tar.gz` archive.
 
 <ThemedImage
-    alt="WSO2 Integrator "
+    alt="Welcome to WSO2 Integrator screen with the Sign in with WSO2 Integration Platform and Skip for now buttons"
     sources={{
-        light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
-        dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
+        light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide-v5.1.png'),
+        dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide-v5.1.png'),
     }}
 />
 
@@ -67,13 +67,15 @@ After installation, launch the WSO2 Integrator:
 
 Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environments, access observability features, and use [WSO2 Integrator Copilot](../../editor/copilot/capabilities.md).
 
-1. On the **Get Started** page, click **Sign In** in the top-right corner.
+1. On the **Welcome to WSO2 Integrator** screen that appears when you first launch the editor, click **Sign in with WSO2 Integration Platform**.
+
+   If you click **Skip for now**, you can sign in later by clicking **Sign In** in the top-right corner of the **Get Started** page.
 
    <ThemedImage
        alt="WSO2 Integrator Get Started page with the Sign In button in the top-right corner"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
        }}
    />
 
@@ -91,10 +93,10 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
 4. The editor shows a **Successfully signed into WSO2 Integration Platform** notification, and your account avatar appears in the top-right corner.
 
    <ThemedImage
-       alt="WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification"
+       alt="WSO2 Integrator Get Started page after sign-in showing the account avatar in the top-right corner"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
        }}
    />
 

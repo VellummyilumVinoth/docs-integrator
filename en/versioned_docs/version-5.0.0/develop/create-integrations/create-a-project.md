@@ -49,14 +49,14 @@ The **Advanced Configurations** section is expanded by default and contains the 
 
 ## Add integrations and libraries
 
-After creation, WSO2 Integrator opens the [project view](../../editor/views/project-view.md). The project starts empty with the message *Your project is empty. Start by adding integrations and libraries to your project.*
+After creation, WSO2 Integrator opens the [project view](../understand-ide/views/project-view.md). The project starts empty with the message *Your project is empty. Start by adding integrations and libraries to your project.*
 
 ![Empty project view](/img/create-project/project-view-empty.png)
 
 You have several entry points into the **Add New Integration** or **Add New Library** dialog:
 
 - **Add Integration or Library** in the **Integrations & Libraries** card.
-- **Generate with AI** in the same card to scaffold an integration from a natural-language prompt using [WSO2 Integrator Copilot](../../editor/copilot/capabilities.md).
+- **Generate with AI** in the same card to scaffold an integration from a natural-language prompt using [WSO2 Integrator Copilot](../copilot/overview.md).
 - **Create Integration or Library** in the sidebar.
 
 The empty project also includes a **README** card that links to **Add a README** so you can document the project, integrations, and libraries.
@@ -88,7 +88,7 @@ The empty project also includes a **README** card that links to **Add a README**
 
 ## What's next
 
-- [Project view](../../editor/views/project-view.md) — Manage, run, and debug your project
+- [Project view](../understand-ide/views/project-view.md) — Manage, run, and debug your project
 - [Create a new integration](create-a-new-integration.md) — Create a standalone integration
 - [Create a library](create-a-library.md) — Create a standalone library
 

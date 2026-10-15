@@ -1,14 +1,14 @@
 ---
 sidebar_position: 4
 title: ICP Observability Setup
-description: View centralized logs and metrics for self-hosted integrations in the Integration Control Plane console using Fluent Bit and OpenSearch.
+description: View centralized logs and metrics for self-hosted integrations in the Integration Control Plane console using Moesif or OpenSearch.
 keywords: [wso2 integrator, observability, icp, integration control plane, fluent bit, opensearch, logs, metrics]
 slug: /observe/icp-observability
 ---
 
 # ICP Observability Setup
 
-When your integrations run on your own infrastructure, the [Integration Control Plane](../icp/index.md) (ICP) can show their logs and metrics in one console, alongside health and runtime status. ICP reads this data from OpenSearch, which is populated by Fluent Bit tailing the runtime's log files.
+When your integrations run on your own infrastructure, the [Integration Control Plane](../icp/index.md) (ICP) can show their logs and metrics in one console, alongside health and runtime status. ICP reads this data from one of two observability providers: Moesif or OpenSearch. With OpenSearch, the data is populated by Fluent Bit tailing the runtime's log files.
 
 ```mermaid
 flowchart LR
@@ -19,7 +19,7 @@ flowchart LR
     Console["ICP console"] --> ICP
 ```
 
-Setting this up involves four steps:
+Setting up OpenSearch involves four steps:
 
 1. Deploy OpenSearch.
 2. Create the index templates for logs and metrics.

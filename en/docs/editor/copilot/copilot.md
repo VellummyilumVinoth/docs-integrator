@@ -3,7 +3,7 @@ title: "WSO2 Integrator Copilot"
 description: Sign in to WSO2 Integrator Copilot with your WSO2 Cloud account or your own AI provider credentials.
 keywords: [wso2 integrator, copilot, getting started, sign in]
 sidebar_position: 1
-slug: /editor/copilot/getting-started
+slug: /editor/copilot
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # WSO2 Integrator Copilot
 
-If you have already [signed up for WSO2 Cloud](../../get-started/setup/setup.md) and are working in the cloud editor, WSO2 Integrator Copilot uses the same authentication and is ready to use. Otherwise, sign in from the Copilot welcome screen.
+If you are already signed in with your WSO2 Cloud account, WSO2 Integrator Copilot uses the same account and is ready to use. Otherwise, sign in from the Copilot welcome screen.
 
 ## Sign in from the Copilot welcome screen
 

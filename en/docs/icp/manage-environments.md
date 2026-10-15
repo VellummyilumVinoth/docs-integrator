@@ -42,7 +42,7 @@ Use the search bar to filter environments across all columns. Pagination control
    | Field | Required | Description |
    |-------|----------|-------------|
    | **Name** | Yes | Display name shown in the console (e.g. `Staging Environment`) |
-   | **Handler** | Auto | URL-safe slug derived from the name (e.g. `staging`). Click the edit icon to override. |
+   | **Handler** | Auto | URL-safe slug derived from the name (e.g. `staging-environment`). Click the edit icon to override. |
    | **Description** | No | Optional free-text description |
    | **Mark as critical environment** | No | When checked, sets the environment type to **Critical** |
 
@@ -68,7 +68,7 @@ Deleting an environment removes it from all integrations across all projects, in
 
 ## Environments in project scope
 
-Environments also appear under **Environments** in the project sidebar. This is a read-only view scoped to the project. Creating and editing environments is only available at the organization level.
+Environments also appear under **Environments** in the project sidebar. This page lists the same organization-level environments. Users with permission to manage environments can also create, edit, and delete environments from here, and the changes apply across the organization.
 
 ## What's next
 

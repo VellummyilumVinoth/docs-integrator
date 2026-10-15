@@ -25,7 +25,7 @@ Use record-to-record mapping when both the domain value and the channel payload 
 1. Define separate record types for the domain value and the channel message. See [Types](../../develop/integration-artifacts/supporting/types.md).
 2. Create a [reusable data mapper](../../develop/integration-artifacts/supporting/data-mapper/access-paths/reusable.md) with the domain record as the input and the message record as the output.
 3. Open the data mapper canvas and connect matching fields, such as `id` to `orderId`.
-4. Use the expression editor for transformed fields, such as combining names or calculating a total. See [Expression editor](../../develop/integration-artifacts/supporting/data-mapper/mapping-capabilities.md#expression-editor).
+4. Use the expression editor for transformed fields, such as combining names or calculating a total. See [Expression bar](../../develop/integration-artifacts/supporting/data-mapper/mapping-capabilities.md#expression-bar).
 5. Use [array mappings](../../develop/integration-artifacts/supporting/data-mapper/array-mappings/array-mappings.md) when the mapper must convert item collections.
 6. Add a **Map Data** step in the flow and pass the mapped record to the next service, resource function, or connector call.
 

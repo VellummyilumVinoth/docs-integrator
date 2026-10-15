@@ -47,10 +47,9 @@ Only a definition in a library package can be published and consumed by other pr
 ## Create an agent definition
 
 1. Open your integration project in WSO2 Integrator.
-2. Click **+ Add Artifact** from the project view, or right-click the project tree.
+2. Click **Add Artifact manually** from the bottom of the project view.
 3. Under **Other Artifacts**, select **Agent**.
-4. The **Add Agent** dialog opens.
-5. Select **Create Agent Definition**.
+4. In the **Add Agent** dialog, select **Create Agent Definition**.
 
 <ThemedImage
     alt="The Create Agent Definition form with Name, Description, a Create this definition in selector set to New library package, and a collapsed Advanced Configurations section."
@@ -123,7 +122,7 @@ Tools added to a definition are part of the template: every instance created fro
 
 Choose a simple type such as `string`, `int`, or `boolean`, or a record type when the agent should return structured data, such as a support ticket with a category, a priority, and a summary.
 
-A structured response type is easier to work with than `string`, because the result can be used directly instead of being interpreted again. This matters most when the definition is used as a tool by another agent: the response type is the shape the calling agent receives.
+A structured response type is easier to work with programatically than `string`, because the result can be used directly instead of being interpreted again. When the definition is used as a tool by another agent: the response type is the shape the calling agent receives.
 
 Consumers of the definition depend on this type, so changing it after the definition has been published is a breaking change. See [Versioning a definition](sharing-and-reusing-definitions.md#versioning-a-definition).
 
@@ -132,8 +131,6 @@ Consumers of the definition depend on this type, so changing it after the defini
 **Initialization Parameters** are the values provided to initialize an agent created from this definition. They are what makes a definition a template rather than a fixed agent: the parts that vary per instance become parameters, and everything else stays in the definition.
 
 Every definition takes a model provider and an optional memory implementation. Click **+ Parameter** to add your own.
-
-Parameterize a value when it differs between instances such as an environment-specific endpoint, a tenant identifier, a model choice. Keep it in the definition when it's part of what the agent *is*.
 
 ### Advanced
 
@@ -203,7 +200,7 @@ The model provider and memory are constructor parameters rather than fixed value
 
 Once a definition exists, create instances of it from the **Pre-built Agents** section of the **Add Agent** dialog, in either of the places that dialog appears:
 
-- **Add Artifact → Other Artifacts → Agent** - to use the agent in an integration.
+- **Add Artifact manually → Other Artifacts → Agent** - to use the agent in an integration.
 - **Add Tool → Agent → + Add Agent** - to use the agent as a tool of another agent. See [Agents as Tools](../multi-agent/agents-as-tools.md).
 
 ## Common pitfalls

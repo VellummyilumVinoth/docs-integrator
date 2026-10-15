@@ -20,8 +20,8 @@ Open the chat agent in the flow diagram view. In the toolbar at the top right of
 <ThemedImage
     alt="AI Chat Agent flow diagram showing the Chat button next to Tracing: Off in the toolbar"
     sources={{
-        light: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it.png'),
-        dark: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it.png'),
+        light: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it-v5.1.png'),
     }}
 />
 
