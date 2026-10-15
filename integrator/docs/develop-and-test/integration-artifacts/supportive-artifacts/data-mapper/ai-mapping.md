@@ -4,7 +4,7 @@ title: AI Data Mapping
 
 # AI Data Mapping
 
-The AI Data Mapper uses WSO2 Integrator Copilot to generate mappings between data structures, without manual field-by-field matching. It is especially useful for large or complex schemas with many fields, deeply nested records, or domain-specific formats. Copilot uses its `data-map` skill to write the mapping code, then checks that the project compiles before it finishes.
+The AI Data Mapper uses WSO2 Integrator Copilot to generate mappings between data structures, without manual field-by-field matching. It is especially useful for large or complex schemas with many fields, deeply nested records, or domain-specific formats.
 
 For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../../../editor/designers/data-mapper.md).
 
@@ -40,7 +40,7 @@ For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../..
         }}
     />
 
-4. In the top-right corner of the canvas, select **Auto Map**. The WSO2 Integrator Copilot panel opens alongside the canvas with a prompt that uses the `/data-map` skill, for example `/data-map generate mappings for the @transform function`. You can edit the prompt to add business rules, or attach reference documents before you send it. See [Supporting documentation to improve accuracy](#supporting-documentation-to-improve-accuracy).
+4. In the top-right corner of the canvas, select **Auto Map**. The WSO2 Integrator Copilot panel opens alongside the canvas with a prompt already filled in. Before you send it, you can add your own business rules to the prompt or attach reference documents. See [Supporting documentation to improve accuracy](#supporting-documentation-to-improve-accuracy).
 
     :::note
     **Auto Map** is disabled when an input or the output is a generic `json` or `xml` type whose structure isn't defined yet. Add a sample payload first, as described in [Generic type mappings](generic-type-mappings.md), and then select **Auto Map**.
@@ -54,9 +54,9 @@ For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../..
         }}
     />
 
-5. Send the prompt. Copilot reads the input and output types, writes the mappings into `data_mappings.bal`, and checks the project for compilation errors, fixing any it finds. When it finishes, it lists the field mappings it made, and mapping lines appear between the matched fields on the canvas.
+5. Send the prompt. Copilot reads the input and output types, writes the mappings, and checks for errors, fixing any it finds. When it finishes, it summarizes the mappings it made, and mapping lines appear between the matched fields on the canvas.
 
-6. Review the result. The **Changes made** panel lists the modified data mapper. Switch between **Diagram** and **Code** to inspect the change, select **Review** to see the diff, or select **Revert** to undo it. To return to the state before this request, select **Restore Checkpoint** at the top of the conversation.
+6. Review the result in the **Changes made** card. You can check what changed, or select **Revert** to undo it. For details, see [Reviewing Changes](../../../../editor/copilot/reviewing-changes.md).
 
     <ThemedImage
         alt="Data Mapper canvas with generated mapping lines from Student to PersonalProfile, and the Copilot panel showing Using skill: data-map, the list of field mappings, No issues found, and a Changes made panel with Review, Diagram, Code, and Revert"
@@ -127,7 +127,7 @@ function transform(Student student) returns PersonalProfile => {
 
 ### Inline mappings
 
-**Auto Map** also works on inline mappings, for example a **Map Data** node inside a service resource or function, not only on standalone data mappers. In this case, Copilot uses the prompt `/data-map generate mappings using record fields and external values` and writes the mapping as inline field expressions in place, instead of creating a data mapper function.
+**Auto Map** also works on inline mappings, not only on standalone data mappers. For example, add a **Declare Variable** node inside a service resource or function, and select **Open in Data Mapper**. Copilot then writes the mappings directly into that node instead of creating a separate data mapper.
 
 ## Features
 
@@ -141,48 +141,34 @@ Mapping generation takes into account:
 - Array types and cardinality
 - Optional and nullable fields
 
-When it decides how to map each field, Copilot follows this order of priority:
+Copilot also:
 
-1. Mappings you already defined. Copilot keeps them as they are.
-2. Existing sub-mappings.
-3. Business rules and context you provide in the prompt or attached documents.
-4. Built-in Ballerina functions and standard approaches.
-5. Default values, only for required fields that have no match.
+- Keeps any mappings you already made.
+- Follows the business rules you add to the prompt or attached documents.
+- Reuses existing sub-mappings where they fit.
 
 ### Supported types
 
-The AI Data Mapper generates mappings between records, JSON, XML, arrays, and primitive types, including records imported from other packages. It handles:
-
-- **Optional and nullable fields**: Uses optional field access (`?.`) only where a field is actually optional or nullable.
-- **Nested records**: Builds nested output records with record constructors.
-- **Array-to-array mappings**: Uses query expressions (`from ... select`) when both the input and output are arrays.
-- **Union types and enums**: Generates a helper function for each union or enum, with one function per level of nesting.
-- **Parsing and conversion**: Converts values between types, such as parsing a string as an integer.
+The AI Data Mapper maps between records, JSON, XML, arrays, and simple values such as text and numbers, including records from other packages. It handles optional fields, nested records, arrays, union types, and enums, and converts values between types, such as text to a number.
 
 ### Supporting documentation to improve accuracy
 
-Attach reference materials to the Copilot prompt to improve mapping accuracy. While schema-only analysis is supported, providing additional documentation helps Copilot understand field relationships and business rules.
+Attach reference materials to the Copilot prompt to improve mapping accuracy. Copilot can map from the types alone, but documents such as a mapping spec help it understand field relationships and business rules.
 
 Supported formats:
 
 - PDF documents
-- Images (JPEG, JPG, PNG, HEIC, HEIF)
+- Images (JPEG, JPG, PNG)
 - CSV files
 - Plain text files
 
-For complex mapping scenarios involving large schemas or domain-specific requirements captured in multiple documents, attach all of them. Copilot analyzes all the documentation to generate accurate, context-aware transformations.
+If your requirements are spread across several documents, attach all of them.
 
-### Sub-mapping reuse
+### Error check
 
-The AI Data Mapper detects existing sub-mappings and data mappers in your project and reuses them where applicable. This reduces code duplication, keeps transformation logic consistent, and keeps the codebase compact.
+After writing the mappings, Copilot checks the project for errors and tries to fix any it finds. It reports **No issues found** when there are none. Always review the result before you use it.
 
-### Helper functions for complex logic
-
-Copilot moves logic that can't be written as a simple field expression into separate helper functions, placed before the main transform function. This includes union and enum handling, transformations that need conditionals or loops, and computations reused across several output fields.
-
-### Compilation check
-
-After writing the mappings, Copilot checks the project for compilation errors and fixes them, repeating until the code compiles. The result reports **No issues found** when the mapping compiles cleanly.
+**Auto Map** uses **data-map**, one of the built-in Copilot skills. For more on skills, see [Skills](../../../../editor/copilot/customize-copilot.md#skills).
 
 ## Responsible use
 
