@@ -71,7 +71,7 @@ The platform does not assign a role to users that you create. When you [create a
 Changes to the permissions of a role can take up to 10 minutes to appear in User Portal tokens. When you assign a role to a user or remove a role from a user, the change takes effect the next time the user signs in.
 :::
 
-## Open the Users and Roles tabs
+## Open the users and roles tabs
 
 1. Sign in to [WSO2 Cloud](https://console.devant.dev).
 2. In the top navigation, click the **Organization** list and select your organization.

@@ -26,7 +26,7 @@ The User Portal has two sign-in options:
 To sign in with **Sign In**, you need a User Portal account from the organization. If you do not have one, or you cannot sign in, contact the organization's administrator. To give someone an account, administrators can follow [Create a user](manage-users.md#create-a-user).
 :::
 
-What you can see and do after you sign in depends on your roles in the organization. If you sign in with **Sign in with Integration Platform** for the first time, the platform gives you a role based on your permissions in the WSO2 Cloud organization. See [Default roles](manage-users.md#default-roles).
+What you can see and do after you sign in depends on your roles in the organization. If you sign in with **Sign in with Integration Platform** for the first time and you do not already have a role on the User Portal application, the platform gives you a role based on your permissions in the WSO2 Cloud organization. See [Default roles](manage-users.md#default-roles).
 
 ## Sign in to the User Portal
 
