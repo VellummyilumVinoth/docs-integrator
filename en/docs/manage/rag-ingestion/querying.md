@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 title: "Deploy and Query an AI Agent"
 description: "Deploy an AI agent to WSO2 Integration Platform and query it using the IT helpdesk chatbot tutorial as an example."
 keywords: [wso2 integrator, rag, agent, deploy, query]
@@ -90,6 +90,6 @@ Example queries to exercise RAG and tools:
 
 ## What's next
 
-- [RAG ingestion](./ingestion.md) — Configure scheduled ingestion into your vector store.
-- [RAG retrieval](./retrieval.md) — Query a vector store to retrieve relevant chunks.
+- [RAG ingestion](./knowledge-bases/ingestion.md) — Configure scheduled ingestion into your vector store.
+- [Knowledge Bases](./knowledge-bases/knowledge-bases.md) — Manage ingested content and test retrieval.
 - [IT helpdesk chatbot tutorial](../../guides/business-use-cases/it-helpdesk-chatbot.md) — Example project that can be used in this walkthrough.
