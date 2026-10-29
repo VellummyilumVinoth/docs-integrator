@@ -1,9 +1,9 @@
 ---
-sidebar_position: 8.5
+sidebar_position: 3
 title: Voice Agents
 description: Enable voice for an AI agent on WSO2 Cloud - Integration Platform by connecting it to LiveKit, a speech-to-text provider, and a text-to-speech provider.
 keywords: [wso2 integrator, wso2 cloud, voice agent, ai agent, livekit, speech to text, text to speech, feature preview]
-slug: /manage/voice-agents
+slug: /manage/rag-ingestion/voice-agents
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -20,19 +20,19 @@ A voice agent lets users talk to an AI agent instead of typing. WSO2 Cloud deplo
 You don't write any extra code for the voice pipeline. It's created and deployed as a separate integration from the AI agent's overview page.
 
 :::tip Start here
-First, build the AI agent as a **Voice Agent Service** in WSO2 Integrator and deploy it to WSO2 Cloud. See [Voice Agent](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) for the steps. This page then covers adding the voice pipeline to that agent in WSO2 Cloud.
+First, [create the AI agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md), expose it through a **Voice Agent Service** in WSO2 Integrator, and deploy it to WSO2 Cloud. This page then covers adding the voice pipeline to that agent in WSO2 Cloud.
 :::
 
 :::info Prerequisites
 - A paid WSO2 Cloud subscription. On the free tier, **Enable Voice Agents** is disabled with the tooltip *Upgrade your plan to enable Voice Agents.*
-- An AI agent integration deployed in WSO2 Cloud that exposes a **WebSocket** endpoint. Without one, **Enable Voice Agents** is disabled with the tooltip *Add a WebSocket endpoint to this AI Agent to enable voice.* Build it as a [Voice Agent Service](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) in WSO2 Integrator. See [Expose an AI agent over WebSocket](#expose-an-ai-agent-over-websocket).
+- An AI agent integration deployed in WSO2 Cloud that exposes a **WebSocket** endpoint. Without one, **Enable Voice Agents** is disabled with the tooltip *Add a WebSocket endpoint to this AI Agent to enable voice.* Start by [creating the AI agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md), then expose it through a Voice Agent Service. See [Expose an AI agent over WebSocket](#expose-an-ai-agent-over-websocket).
 - A LiveKit project: the LiveKit URL (for example, `wss://your-project.livekit.cloud`), an API key, and an API secret. See [LiveKit credentials](https://docs.livekit.io/deploy/agents/secrets/#livekit-credentials).
 - API keys for your speech-to-text and text-to-speech providers. For OpenAI, create a key on the [OpenAI API keys](https://platform.openai.com/api-keys) page.
 :::
 
 ## Expose an AI agent over WebSocket
 
-The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. In WSO2 Integrator, create a **Voice Agent Service** and call your agent from its `onChatMessage` handler. See [Voice Agent](../develop-and-test/integration-artifacts/ai-integrations/voice-agent/voice-agent.md) for the full walkthrough. The generated code is similar to the following:
+The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. In WSO2 Integrator, [create the AI agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md), add a **Voice Agent Service**, and call your agent from its `onChatMessage` handler. The generated code is similar to the following:
 
 ```ballerina
 import ballerinax/ai.wso2.integration;
