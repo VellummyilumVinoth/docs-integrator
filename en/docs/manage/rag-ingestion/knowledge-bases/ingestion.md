@@ -69,7 +69,9 @@ Select **Google Drive** or **Amazon S3**, and then enter the connection details.
 | **Google Drive - OAuth** | Enter the **Client ID**, **Client Secret**, **Refresh Token**, and target **Folder ID**. Use OAuth when the folder must remain private. |
 | **Amazon S3** | Enter the **Access Key ID**, **Secret Access Key**, and **Bucket Name**. The credentials must be able to list and read objects in the bucket. |
 
+:::tip
 You can find a Google Drive folder ID in its URL after `/folders/`.
+:::
 
 Next, select an ingestion mode:
 
@@ -135,7 +137,7 @@ After a successful run, open the **Retrieval** tab and send a query based on the
 
 | Symptom | What to check |
 | --- | --- |
-| The data source does not reach **Deployed** | Open the component and deployment details, then correct the reported configuration or deployment error. |
+| The data source does not reach **Deployed** | Open the actions menu, select the data-source component, and review its deployment logs. Correct the reported configuration or deployment error, and then redeploy. See [Troubleshoot deployment](../../../deploy-and-run/deploy-to-wso2-cloud/troubleshoot-deployment.md) for more guidance. |
 | An ingestion run fails | Open **Execution logs** and check the provider credentials, source location, and network access. |
 | No content is ingested | Confirm that the folder or bucket contains supported files and that the configured identity can list and read them. |
 | New content is not appearing | Check the schedule and **Last successful sync**, or click **Ingest** to run immediately. |

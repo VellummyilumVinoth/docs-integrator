@@ -2,7 +2,7 @@
 sidebar_position: 3
 sidebar_label: Manage a Knowledge Base
 title: Manage a Knowledge Base
-description: Manage Knowledge Base configuration, data sources, services, API access, retrieval tests, and deletion in WSO2 Cloud - Integration Platform.
+description: Manage Knowledge Base configuration, data sources, services, API access, retrieval tests, and deletion in WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, manage knowledge base, kb data source, kb service, api key, retrieval, reranking]
 slug: /manage/rag-ingestion/manage-knowledge-base
 ---
@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Manage a Knowledge Base
 
-Open **AI Services** > **Knowledge Base**, and then select a Knowledge Base. Its details page provides four tabs for operating and connecting it.
+To manage a Knowledge Base, navigate to **AI Services** > **Knowledge Base** and select it from the list. The details page features four tabs that let you configure, connect, and operate your service.
 
 <ThemedImage
     alt="Knowledge Base Overview showing its configuration, service URL, data sources, ingestion controls, and execution logs"
@@ -51,7 +51,7 @@ After adding or changing a data source, wait until its status is **Deployed** be
 5. Click **Update**.
 
 :::caution
-Configuration changes affect every component that uses the Knowledge Base. The platform attempts to redeploy those components and notifies you if any deployment requires manual attention. If you change the embedding model, collection, index, table, or chunking settings, re-ingest content and retest retrieval before directing production traffic to it.
+Configuration changes affect every component that uses the Knowledge Base. WSO2 Cloud attempts to redeploy those components and notifies you if any deployment requires manual attention. If you change the embedding model, collection, index, table, or chunking settings, re-ingest content and retest retrieval before directing production traffic to it.
 :::
 
 ## Connect an application
@@ -94,7 +94,9 @@ To use the Knowledge Base from a WSO2 Integrator project, add a **WSO2 Cloud Kno
     }}
 />
 
+:::tip
 If no useful chunks are returned, check the data source's last successful sync and execution logs first. Then try a lower similarity threshold or a higher maximum chunk count. If results are still poor, review the chunking settings and confirm that ingestion and retrieval use the same embedding model.
+:::
 
 ## Delete a Knowledge Base
 
@@ -105,7 +107,9 @@ Delete a Knowledge Base from the Knowledge Base list. Deletion is available only
 3. Disconnect integrations and any other dependent components.
 4. Return to the Knowledge Base list and use the delete action.
 
+:::caution
 Deleting a Knowledge Base removes the managed configuration. Confirm separately whether content in an externally managed vector store must also be removed according to your data-retention requirements.
+:::
 
 ## Related pages
 

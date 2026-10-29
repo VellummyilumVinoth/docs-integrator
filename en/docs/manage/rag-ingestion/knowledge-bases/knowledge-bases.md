@@ -2,7 +2,7 @@
 sidebar_position: 0
 sidebar_label: Overview
 title: Knowledge Bases
-description: Understand managed Knowledge Bases, their resources, and how they support retrieval-augmented generation in WSO2 Cloud - Integration Platform.
+description: Understand managed Knowledge Bases, their resources, and how they support retrieval-augmented generation in WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, knowledge base, rag, vector store, embedding model, chunking, data source, kb service]
 slug: /manage/rag-ingestion/knowledge-bases
 ---
@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Knowledge Bases
 
-A **Knowledge Base (KB)** is a reusable, managed configuration for indexing and retrieving your organization's content. It gives integrations and AI agents a consistent way to find relevant information without coupling them to a particular vector database or ingestion source.
+A **Knowledge Base (KB)** is a reusable resource for indexing and retrieving your organization's content. It gives integrations and AI agents a consistent way to find relevant information without coupling them to a particular vector database or ingestion source.
 
 Each Knowledge Base brings the following resources together:
 
@@ -24,7 +24,7 @@ Each Knowledge Base brings the following resources together:
 | **KB data source** | Imports files from Google Drive or Amazon S3, either once or on a schedule. |
 | **KB service** | Provides the service URL used to retrieve content from the Knowledge Base. |
 
-The platform manages these resources as a unit. You configure the retrieval behavior once, attach one or more data sources, and connect integrations or applications through the generated KB service.
+WSO2 Cloud manages these resources as a unit. You configure the retrieval behavior once, attach one or more data sources, and connect integrations or applications through the generated Knowledge Base service.
 
 ## How a Knowledge Base works
 
@@ -35,7 +35,7 @@ The platform manages these resources as a unit. You configure the retrieval beha
 5. A query is embedded using the same model, and the KB service returns the most relevant chunks. Optional Cohere reranking can reorder those results.
 
 :::note
-Use the same embedding model for ingestion and retrieval. Changing the embedding model for an existing collection can make previously stored vectors incompatible with new queries; re-ingest the content after such a change.
+Use the same embedding model for ingestion and retrieval. Changing the embedding model for an existing collection can make previously stored vectors incompatible with new queries. After changing the embedding model, re-ingest the content before running new queries.
 :::
 
 ## Supported resources
@@ -56,10 +56,13 @@ Use the same embedding model for ingestion and retrieval. Changing the embedding
 - **Chunking strategies:** Recursive, Sentence, and Character.
 - **Chunking controls:** Maximum segment size and maximum overlap size.
 
-### Data sources and schedules
+### Data sources
 
 - **Google Drive:** Connect with an API key or OAuth credentials and select a folder.
 - **Amazon S3:** Connect with an access key ID and secret access key and select a bucket.
+
+### Schedules
+
 - **One-time ingestion:** Runs once after the data source is deployed.
 - **Scheduled ingestion:** Runs by a fixed interval or a cron expression.
 
@@ -75,13 +78,10 @@ Use the **AI Services** > **Knowledge Base** page to view all Knowledge Bases in
     }}
 />
 
-From here, you can:
+## What's next?
 
 - [Create a Knowledge Base](./create-knowledge-base.md) and optionally attach its first data source.
 - [Manage a Knowledge Base](./manage-knowledge-base.md), its data sources, schedules, services, and retrieval settings.
+- [Add data sources](./ingestion.md) to ingest content from Google Drive or Amazon S3.
+- [Review Vector Databases](../vector-databases.md) available to Knowledge Bases.
 - Open the Knowledge Base from WSO2 Integrator by selecting a **WSO2 Cloud Knowledge Base** connection. See [Connect to an existing WSO2 Cloud Knowledge Base](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/knowledge-bases.md#connect-to-an-existing-knowledge-base).
-
-## Related pages
-
-- [Vector Databases](../vector-databases.md)
-- [Add data sources](./ingestion.md)

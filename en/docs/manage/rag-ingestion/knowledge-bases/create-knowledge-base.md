@@ -2,7 +2,7 @@
 sidebar_position: 1
 sidebar_label: Create a Knowledge Base
 title: Create a Knowledge Base
-description: Create a managed Knowledge Base with a vector store, embedding model, chunking strategy, and optional data source in WSO2 Cloud - Integration Platform.
+description: Create a managed Knowledge Base with a vector store, embedding model, chunking strategy, and optional data source in WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, create knowledge base, rag, vector store, embedding model, chunking, google drive, amazon s3]
 slug: /manage/rag-ingestion/create-knowledge-base
 ---
@@ -12,16 +12,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Create a Knowledge Base
 
-Create a Knowledge Base to define how content is stored, embedded, split, and retrieved. You can attach a data source during creation or add one later.
+A Knowledge Base controls how your data is split into chunks, converted to embeddings, stored, and queried. You can attach a data source during creation or add one later.
 
 ## Prerequisites
 
-Before you begin, make sure you have:
+Before you begin, ensure you have the following:
 
-- Access to a WSO2 Cloud organization and permission to create AI services.
-- Connection details for a [supported vector store](./knowledge-bases.md#vector-stores), or a compatible WSO2-managed PostgreSQL database in the organization.
-- Credentials for OpenAI, Azure OpenAI, or Mistral AI.
-- If you want to ingest content immediately, credentials and a folder or bucket for Google Drive or Amazon S3.
+- **Platform access:** A WSO2 Cloud organization with permission to create AI services.
+- **Vector storage:** Connection details for a [supported vector store](./knowledge-bases.md#vector-stores) or a compatible WSO2-managed PostgreSQL database.
+- **Model provider:** A valid API key for OpenAI, Azure OpenAI, or Mistral AI.
+- **Data source (optional):** Credentials and a specific Google Drive folder or Amazon S3 bucket if you plan to ingest content immediately.
 
 ## Start the creation wizard
 
@@ -39,8 +39,8 @@ Before you begin, make sure you have:
 
 ## Step 1: Name the Knowledge Base
 
-1. Enter a descriptive **Knowledge Base name**. The platform derives an immutable key from this name.
-2. Optional: Enter a description that explains the content or intended consumers.
+1. Enter a descriptive name for the **Knowledge Base**. The platform derives an immutable key from this name.
+2. Optional: Enter a description that explains the content or intended consumers of the Knowledge Base.
 3. Click **Next**.
 
 <ThemedImage
@@ -51,11 +51,13 @@ Before you begin, make sure you have:
     }}
 />
 
+:::tip
 Choose a name that identifies the content rather than its storage provider, for example `HR policies` or `Product documentation`. This makes the Knowledge Base easier to reuse if its backing service changes.
+:::
 
 ## Step 2: Configure the vector store
 
-Select a provider and enter its connection details:
+Select a provider and enter connection details:
 
 | Provider | Fields |
 | --- | --- |
@@ -65,7 +67,7 @@ Select a provider and enter its connection details:
 | **PostgreSQL** | Host, port (default `5432`), user, password, database, and table name |
 | **WSO2 Integration Platform Managed** | Select an available managed PostgreSQL database. The option is displayed only when a compatible database exists in the organization. |
 
-Click **Next** after all required fields are valid.
+- Click **Next**. The button becomes available after all required fields pass validation.
 
 :::tip
 Use a separate collection, index, or table for content that has different ownership, access, retention, or embedding requirements.
@@ -92,7 +94,9 @@ Use a separate collection, index, or table for content that has different owners
     }}
 />
 
+:::note
 Larger segments preserve more context but can reduce retrieval precision. Overlap helps preserve context across boundaries but increases the number of stored tokens. Start with the defaults, test representative queries, and tune these values based on the results.
+:::
 
 ## Step 4: Add a data source (optional)
 
