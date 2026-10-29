@@ -21,7 +21,7 @@ below). Don't fork it per-branch.
 | `saas` | WSO2 Cloud | `staging` (auto) → `gh-pages` (promoted) | No |
 | `wso2-integrator` | WSO2 Integrator (self-hosted) | `staging` (auto) → `gh-pages` (promoted) | Yes |
 | `wso2-connectors` | Connectors catalog | `staging` (auto) → `gh-pages` (promoted) | No |
-| `wso2-agent-builder` | *(planned)* | same shape as above once launched | TBD |
+| `wso2-agent-builder` | WSO2 Agent Builder | `staging` (auto) → `gh-pages` (promoted) | No |
 | `staging` | *(none — build output only)* | Choreo (auto, watches this branch) | — |
 | `gh-pages` | *(none — build output only)* | production, `wso2.com/.../docs/` | — |
 
