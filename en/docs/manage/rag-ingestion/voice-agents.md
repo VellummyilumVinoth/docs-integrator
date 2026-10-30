@@ -35,7 +35,7 @@ This page then covers adding the voice pipeline to that agent in WSO2 Cloud.
 
 ## Expose an AI agent over WebSocket
 
-The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. [Create the AI agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md), then expose it over WebSocket. You can reuse an agent that you already expose as a chat agent, so the same agent answers both chat and voice:
+The voice pipeline sends each transcribed user utterance to the AI agent as a chat message and speaks the returned string. [Create the AI agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md), then expose it over WebSocket. You can reuse an agent that you already expose as a [chat agent](../../develop-and-test/integration-artifacts/ai-integrations/agents/create-an-agent.md#create-a-chat-agent), so the same agent answers both chat and voice:
 
 - **WSO2 Integrator**: add a **Voice Agent Service** and call your agent from its `onChatMessage` handler. See [Voice Agent in WSO2 Integrator](https://wso2.com/integration-platform/docs/integrator/develop-and-test/integration-artifacts/ai-integrations/voice-agent).
 - **WSO2 Agent Builder**: open the agent's canvas, click **Add Trigger**, and select **Voice Chat** under **Chat Channels**. Agent Builder wires the agent into the `onChatMessage` handler for you. See [Voice Agent in WSO2 Agent Builder](https://wso2.com/integration-platform/docs/agent-builder/develop-and-test/integration-artifacts/ai-integrations/voice-agent).
@@ -68,7 +68,7 @@ Write the agent's system prompt for speech: ask for short replies (one or two se
 You can create a voice agent in two ways:
 
 - **[From the AI agent's overview page](#from-the-ai-agent-overview-page)**: the quickest option when the AI agent is deployed in WSO2 Cloud. The agent is preselected for you.
-- **[From AI Services > Voice Agents](#from-ai-services--voice-agents)**: lets you pick the project and the target agent yourself. The target can be an agent deployed in WSO2 Cloud (**Platform-Hosted Agent**) or any agent you host yourself that's reachable over WebSocket (**Externally-Hosted Agent**).
+- **[From AI Services > Voice Agents](#from-ai-services--voice-agents)**: lets you pick the project and the target agent yourself. The target can be an agent deployed in WSO2 Cloud (**Platform-Hosted Agent**) or any agent you host yourself that's reachable over WebSocket (**Externally-Hosted Agent**, for development and testing only).
 
 Both options then continue through the same LiveKit, speech-to-text, text-to-speech, and deploy steps.
 
@@ -140,6 +140,10 @@ A four-step wizard opens. The current AI agent is preselected as the target, so 
             }}
         />
 
+    :::caution Development and testing only
+    Use an externally hosted agent only for development and testing. The voice agent doesn't authenticate to an externally hosted agent yet, so this option isn't suitable for production. For production, use a **Platform-Hosted Agent**.
+    :::
+
     An externally hosted agent must follow the same WebSocket contract as a Voice Agent Service. The wizard summarizes it under **How your target agent should handle a message?**:
 
     - Accept the `sessionId` as a query parameter on the WebSocket connection URL (for example, `wss://your-agent-host/path?sessionId=<id>`). It stays the same for the whole conversation.
@@ -170,7 +174,7 @@ To find these values, see [LiveKit credentials](https://docs.livekit.io/deploy/a
 ### Configure speech to text
 
 1. Select a speech-to-text (STT) provider: **AssemblyAI**, **Cartesia**, **Deepgram**, **ElevenLabs**, or **OpenAI**.
-2. Select the **Model** and **Language**. For OpenAI, the default model is **GPT-4o Mini Transcribe**.
+2. Check the **Model** and **Language**. When you select a provider, the wizard preselects a model and language, which you can change. For OpenAI, it preselects **GPT-4o Mini Transcribe** and **English**.
 3. Enter the provider's API key. For OpenAI, create one on the [OpenAI API keys](https://platform.openai.com/api-keys) page. The wizard links to each provider's key page, for example **How to get your OpenAI API key?**
 4. Click **Next**.
 
@@ -189,7 +193,7 @@ To find these values, see [LiveKit credentials](https://docs.livekit.io/deploy/a
 3. Enter the provider's API key. You can reuse the same [OpenAI API key](https://platform.openai.com/api-keys) for both speech to text and text to speech.
 4. Click **Next**.
 
-For OpenAI, the available models are **GPT-4o Mini TTS** (the default), **TTS-1**, and **TTS-1 HD**, and the available voices are Alloy, Ash, Ballad, Coral, Echo, Fable, Nova, Onyx, Sage, and Shimmer. **Language** defaults to auto-detection.
+As with speech to text, the wizard preselects a model, voice, and language for the provider you select. For OpenAI, it preselects **GPT-4o Mini TTS**, **Alloy**, and auto-detected language. The available OpenAI models are **GPT-4o Mini TTS**, **TTS-1**, and **TTS-1 HD**, and the available voices are Alloy, Ash, Ballad, Coral, Echo, Fable, Nova, Onyx, Sage, and Shimmer.
 
 <ThemedImage
     alt="Configure Text to Speech step with OpenAI, GPT-4o Mini TTS, the Alloy voice, and auto-detected language selected"
