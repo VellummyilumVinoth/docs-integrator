@@ -27,7 +27,7 @@ This page then covers adding the voice pipeline to that agent in WSO2 Cloud.
 :::
 
 :::info Prerequisites
-- A paid WSO2 Cloud subscription. Voice agents are available to all organizations, but on the free tier **Enable Voice Agents** is disabled with the tooltip *Upgrade your plan to enable Voice Agents.*
+- A paid WSO2 Cloud subscription. Voice agents are available to all organizations, but **Enable Voice Agents** is disabled on the free tier.
 - An AI agent integration deployed in WSO2 Cloud that exposes a **WebSocket** endpoint. Without one, **Enable Voice Agents** is disabled with the tooltip *Add a WebSocket endpoint to this AI Agent to enable voice.* See [Expose an AI agent over WebSocket](#expose-an-ai-agent-over-websocket).
 - A LiveKit project: the LiveKit URL (for example, `wss://your-project.livekit.cloud`), an API key, and an API secret. See [LiveKit credentials](https://docs.livekit.io/deploy/agents/secrets/#livekit-credentials).
 - API keys for your speech-to-text and text-to-speech providers. For OpenAI, create a key on the [OpenAI API keys](https://platform.openai.com/api-keys) page.
